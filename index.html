@@ -1,0 +1,2491 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fresh Catch and Green Supply Hub — Fish &amp; Vegetable Delivery in Binangonan, Rizal</title>
+<meta name="description" content="Fresh Catch and Green Supply Hub — same-day fish, seafood and vegetable supply and delivery service in Binangonan, Rizal." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>" />
+<style>
+/* ============================================================
+   Fresh Catch and Green Supply Hub — storefront styles
+   Marketplace layout (Shopee-style) with a fresh market palette.
+   ============================================================ */
+
+:root{
+  --brand:#0e8f5b;          /* deep fresh green */
+  --brand-dark:#0a7047;
+  --brand-light:#e8f6ef;
+  --sea:#0f7ba8;            /* lake blue accent */
+  --price:#ee4d2d;          /* price / sale red-orange */
+  --price-soft:#fff2ee;
+  --ink:#222;
+  --ink-2:#555;
+  --ink-3:#888;
+  --line:#e8e8e8;
+  --bg:#f5f5f5;
+  --white:#fff;
+  --star:#f5a623;
+  --radius:10px;
+  --shadow:0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover:0 6px 18px rgba(0,0,0,.14);
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.5;
+}
+img{max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+input,select,textarea{font-family:inherit;font-size:14px;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 12px;}
+
+/* ── Buttons ─────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:11px 20px;border-radius:6px;font-weight:600;font-size:14px;
+  transition:.15s;white-space:nowrap;
+}
+.btn-primary{background:var(--brand);color:#fff;}
+.btn-primary:hover{background:var(--brand-dark);}
+.btn-accent{background:var(--price);color:#fff;}
+.btn-accent:hover{filter:brightness(.93);}
+.btn-light{background:#fff;color:var(--brand-dark);}
+.btn-light:hover{background:#f1f1f1;}
+.btn-ghost{background:#fff;color:var(--ink-2);border:1px solid var(--line);}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand);}
+.btn-outline{background:#fff;color:var(--brand);border:1px solid var(--brand);}
+.btn-outline:hover{background:var(--brand-light);}
+.btn-sm{padding:7px 14px;font-size:13px;}
+.btn-lg{padding:14px 34px;font-size:15px;}
+.btn:disabled{opacity:.5;cursor:not-allowed;}
+.block-btn{display:flex;width:100%;}
+
+.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);}
+.block{margin-top:16px;padding:16px;}
+.block-title{
+  margin:0 0 14px;font-size:15px;letter-spacing:.5px;color:var(--ink-2);
+  font-weight:700;text-transform:uppercase;
+}
+
+/* ── Top strip ───────────────────────────── */
+.topbar{background:linear-gradient(90deg,var(--brand-dark),var(--brand));color:#fff;font-size:12px;}
+.topbar-in{display:flex;justify-content:space-between;align-items:center;height:34px;}
+.topbar i{opacity:.45;margin:0 8px;font-style:normal;}
+.topbar span{opacity:.92;cursor:pointer;}
+.topbar span:hover{opacity:1;text-decoration:underline;}
+.tb-strong{font-weight:700;}
+
+/* ── Header ──────────────────────────────── */
+.header{
+  background:linear-gradient(90deg,var(--brand),#12a86c);
+  padding:14px 0 16px;position:sticky;top:0;z-index:60;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+.header-in{display:flex;align-items:center;gap:24px;}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;flex-shrink:0;}
+.logo-mark{font-size:26px;line-height:1;}
+.logo-text{display:flex;flex-direction:column;line-height:1.15;}
+.logo-text b{font-size:21px;letter-spacing:.3px;}
+.logo-text small{font-size:11px;opacity:.9;letter-spacing:.6px;}
+
+.searchbox{flex:1;position:relative;}
+.searchbox input{
+  width:100%;border:none;border-radius:4px;padding:11px 52px 11px 14px;
+  outline:none;background:#fff;
+}
+.search-btn{
+  position:absolute;right:4px;top:4px;height:34px;width:44px;
+  background:var(--brand-dark);border-radius:3px;color:#fff;font-size:15px;
+}
+.search-btn:hover{background:#075c3a;}
+.hot-keys{display:flex;gap:14px;margin-top:6px;font-size:12px;color:#eafff4;flex-wrap:wrap;}
+.hot-keys a:hover{text-decoration:underline;}
+
+.cart-btn{position:relative;font-size:26px;color:#fff;flex-shrink:0;padding:0 6px;}
+.cart-badge{
+  position:absolute;top:-4px;right:-6px;background:#fff;color:var(--price);
+  font-size:11px;font-weight:700;border-radius:10px;padding:1px 6px;
+  border:1px solid var(--price);
+}
+
+/* ── Views ───────────────────────────────── */
+.view[hidden]{display:none;}
+
+/* ── Hero ────────────────────────────────── */
+.hero{display:grid;grid-template-columns:2fr 1fr;gap:12px;padding-top:16px;}
+.hero-slider{position:relative;border-radius:var(--radius);overflow:hidden;min-height:250px;box-shadow:var(--shadow);}
+.slide{
+  display:none;padding:32px 34px;min-height:250px;color:#fff;
+  align-items:center;justify-content:space-between;gap:16px;
+}
+.slide.active{display:flex;}
+.s1{background:linear-gradient(120deg,#0b7ea8,#12a86c);}
+.s2{background:linear-gradient(120deg,#0f8f4f,#8bc34a);}
+.s3{background:linear-gradient(120deg,#ef6c2d,#f2a83b);}
+.slide-copy{max-width:66%;}
+.slide h2{margin:10px 0 8px;font-size:27px;line-height:1.25;}
+.slide p{margin:0 0 16px;opacity:.95;font-size:14px;}
+.slide-art{font-size:96px;opacity:.9;}
+.pill{
+  display:inline-block;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);
+  border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;
+}
+.slider-dots{position:absolute;bottom:12px;left:34px;display:flex;gap:7px;}
+.slider-dots button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.5);}
+.slider-dots button.active{background:#fff;width:22px;border-radius:5px;}
+
+.hero-side{display:grid;grid-template-rows:1fr 1fr;gap:12px;}
+.side-card{
+  border-radius:var(--radius);padding:18px;display:flex;gap:12px;align-items:center;
+  color:#fff;box-shadow:var(--shadow);
+}
+.sc1{background:linear-gradient(135deg,#0f7ba8,#4bb3d4);}
+.sc2{background:linear-gradient(135deg,#0a7047,#3fb07a);}
+.sc-icon{font-size:32px;}
+.side-card b{display:block;font-size:15px;margin-bottom:3px;}
+.side-card span{font-size:12px;opacity:.92;}
+
+/* ── Service badges ──────────────────────── */
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px;}
+.badge-item{
+  background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:14px;display:flex;gap:10px;align-items:center;
+}
+.badge-item>span{font-size:24px;}
+.badge-item b{display:block;font-size:13px;}
+.badge-item small{color:var(--ink-3);font-size:12px;}
+
+/* ── Categories ──────────────────────────── */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(8,1fr);
+  border-top:1px solid var(--line);border-left:1px solid var(--line);
+}
+.cat-item{
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:16px 8px;text-align:center;transition:.15s;background:#fff;
+}
+.cat-item:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px);}
+.cat-item.active{background:var(--brand-light);}
+.cat-emoji{font-size:32px;display:block;margin-bottom:8px;}
+.cat-name{font-size:12.5px;font-weight:600;display:block;}
+.cat-sub{font-size:11px;color:var(--ink-3);}
+
+/* ── Flash deals ─────────────────────────── */
+.flash-head{display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap;}
+.flash-title{margin:0;color:var(--price);font-size:17px;font-weight:800;letter-spacing:.5px;}
+.countdown{display:flex;align-items:center;gap:4px;font-size:13px;color:var(--ink-2);}
+.countdown b{
+  background:var(--ink);color:#fff;border-radius:3px;padding:2px 6px;
+  font-size:13px;min-width:26px;text-align:center;display:inline-block;
+}
+.see-all{margin-left:auto;color:var(--brand);font-size:13px;font-weight:600;}
+.flash-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;}
+
+/* ── Catalog layout ──────────────────────── */
+.catalog-head{padding:14px 16px;}
+.catalog-head .block-title{margin:0;color:var(--brand-dark);}
+.catalog-body{display:grid;grid-template-columns:210px 1fr;gap:12px;margin-top:12px;align-items:start;}
+.filters{padding:16px;position:sticky;top:96px;}
+.filters h4{margin:0 0 12px;font-size:14px;text-transform:uppercase;letter-spacing:.5px;}
+.f-group{border-top:1px solid var(--line);padding:12px 0;}
+.f-label{display:block;font-weight:600;font-size:13px;margin-bottom:8px;}
+.f-cats button{
+  display:block;width:100%;text-align:left;padding:6px 8px;border-radius:5px;
+  font-size:13px;color:var(--ink-2);
+}
+.f-cats button:hover{background:var(--brand-light);color:var(--brand-dark);}
+.f-cats button.active{background:var(--brand);color:#fff;font-weight:600;}
+.price-row{display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+.price-row input{
+  width:100%;padding:7px;border:1px solid var(--line);border-radius:4px;outline:none;min-width:0;
+}
+.price-row input:focus{border-color:var(--brand);}
+.f-rate{display:flex;flex-direction:column;gap:5px;}
+.f-rate button{text-align:left;padding:5px 8px;border-radius:5px;font-size:13px;color:var(--ink-2);}
+.f-rate button.active{background:var(--brand-light);color:var(--brand-dark);font-weight:600;}
+.chk{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);margin-bottom:6px;cursor:pointer;}
+
+.sortbar{
+  display:flex;align-items:center;gap:8px;padding:10px 12px;font-size:13px;
+  color:var(--ink-2);flex-wrap:wrap;
+}
+.sort-btn{padding:7px 14px;background:#fff;border:1px solid var(--line);border-radius:4px;font-size:13px;}
+.sort-btn.active{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:600;}
+.sort-select{padding:7px 10px;border:1px solid var(--line);border-radius:4px;outline:none;background:#fff;}
+.result-count{margin-left:auto;color:var(--ink-3);}
+
+/* ── Product cards ───────────────────────── */
+.prod-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px;}
+.pcard{
+  background:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow);
+  transition:.15s;display:flex;flex-direction:column;cursor:pointer;
+  border:1px solid transparent;
+}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:var(--brand);}
+.pthumb{
+  position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+  font-size:64px;
+}
+.bg1{background:linear-gradient(135deg,#e0f7ef,#b9ead6);}
+.bg2{background:linear-gradient(135deg,#e3f2fd,#bbdefb);}
+.bg3{background:linear-gradient(135deg,#fff4e0,#ffe0b2);}
+.bg4{background:linear-gradient(135deg,#ffeaea,#ffcdd2);}
+.bg5{background:linear-gradient(135deg,#f0f4c3,#dce775);}
+.bg6{background:linear-gradient(135deg,#e8eaf6,#c5cae9);}
+.bg7{background:linear-gradient(135deg,#fce4ec,#f8bbd0);}
+.bg8{background:linear-gradient(135deg,#e0f2f1,#b2dfdb);}
+.pbadge{
+  position:absolute;top:0;right:0;background:var(--price);color:#fff;
+  font-size:11px;font-weight:700;padding:3px 6px;border-radius:0 0 0 6px;
+}
+.pbadge-new{
+  position:absolute;top:0;left:0;background:var(--sea);color:#fff;
+  font-size:11px;font-weight:700;padding:3px 6px;border-radius:0 6px 6px 0;
+}
+.pflash{
+  position:absolute;bottom:0;left:0;right:0;background:rgba(238,77,45,.9);color:#fff;
+  font-size:11px;font-weight:700;text-align:center;padding:2px;
+}
+.pbody{padding:9px 10px 11px;display:flex;flex-direction:column;flex:1;}
+.pname{
+  font-size:13px;line-height:1.35;height:36px;overflow:hidden;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin-bottom:6px;
+}
+.pprice{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+.pprice b{color:var(--price);font-size:17px;font-weight:700;}
+.pprice s{color:var(--ink-3);font-size:12px;}
+.punit{color:var(--ink-3);font-size:12px;}
+.pmeta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:auto;padding-top:8px;font-size:11.5px;color:var(--ink-3);
+}
+.pstars{color:var(--star);}
+.ploc{font-size:11px;color:var(--ink-3);margin-top:4px;display:flex;align-items:center;gap:3px;}
+.padd{
+  margin-top:8px;width:100%;padding:7px;border-radius:4px;background:var(--brand);
+  color:#fff;font-size:12.5px;font-weight:600;
+}
+.padd:hover{background:var(--brand-dark);}
+.pcard.out .pthumb{filter:grayscale(.7);opacity:.6;}
+.pout-tag{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.45);color:#fff;font-weight:700;font-size:14px;
+}
+
+.load-more-wrap{display:flex;justify-content:center;margin:18px 0 6px;}
+.empty{
+  background:#fff;border-radius:var(--radius);padding:44px;text-align:center;
+  color:var(--ink-3);margin-top:12px;box-shadow:var(--shadow);
+}
+.empty span{font-size:44px;display:block;margin-bottom:10px;}
+
+/* ── Coverage ────────────────────────────── */
+.cov-sub{margin:-6px 0 14px;color:var(--ink-3);font-size:13px;}
+.cov-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.cov-item{border:1px solid var(--line);border-radius:6px;padding:9px 10px;font-size:12.5px;}
+.cov-item b{display:block;}
+.cov-item span{color:var(--ink-3);font-size:11.5px;}
+
+/* ── Product detail ──────────────────────── */
+.crumbs{font-size:13px;color:var(--ink-3);padding:14px 0 4px;}
+.crumbs a{color:var(--brand);cursor:pointer;}
+.pd{display:grid;grid-template-columns:400px 1fr;gap:22px;padding:20px;}
+.pd-gallery .pd-main{
+  aspect-ratio:1/1;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:150px;position:relative;
+}
+.pd-thumbs{display:flex;gap:8px;margin-top:10px;}
+.pd-thumbs div{
+  width:62px;height:62px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:28px;border:2px solid transparent;cursor:pointer;
+}
+.pd-thumbs div.active{border-color:var(--brand);}
+.pd-info h1{font-size:22px;margin:0 0 10px;line-height:1.35;}
+.pd-rate{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--ink-2);padding-bottom:12px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+.pd-rate b{color:var(--brand);}
+.pd-price{background:#fafafa;border-radius:6px;padding:16px;margin:14px 0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.pd-price .now{color:var(--price);font-size:32px;font-weight:700;}
+.pd-price s{color:var(--ink-3);}
+.pd-price .off{background:var(--price);color:#fff;font-size:12px;font-weight:700;padding:2px 7px;border-radius:3px;}
+.pd-rows{display:grid;gap:12px;margin-bottom:18px;}
+.pd-row{display:flex;gap:16px;font-size:13.5px;align-items:center;flex-wrap:wrap;}
+.pd-row>span:first-child{width:110px;color:var(--ink-3);flex-shrink:0;}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:4px;overflow:hidden;width:fit-content;}
+.qty button{width:34px;height:34px;font-size:17px;color:var(--ink-2);background:#fff;}
+.qty button:hover{background:#f2f2f2;}
+.qty input{width:56px;height:34px;text-align:center;border:none;border-left:1px solid var(--line);border-right:1px solid var(--line);outline:none;}
+.pd-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.pd-note{margin-top:16px;padding:12px 14px;background:var(--brand-light);border-radius:6px;font-size:13px;color:var(--brand-dark);}
+.pd-seller{
+  margin:0 20px 16px;padding:16px;border:1px solid var(--line);border-radius:8px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.seller-ava{
+  width:52px;height:52px;border-radius:50%;background:var(--brand);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+}
+.seller-meta b{display:block;}
+.seller-meta span{font-size:12.5px;color:var(--ink-3);}
+.pd-desc{padding:0 20px 22px;}
+.pd-desc h4{font-size:14px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-2);border-bottom:1px solid var(--line);padding-bottom:8px;}
+.pd-desc p{color:var(--ink-2);line-height:1.75;}
+.spec-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13.5px;}
+.spec-table td{padding:8px 10px;border-bottom:1px solid var(--line);}
+.spec-table td:first-child{color:var(--ink-3);width:180px;}
+
+/* ── Cart ────────────────────────────────── */
+.page-head{padding:18px 0 4px;}
+.page-head h1{font-size:22px;margin:0;}
+.cart-head,.cart-line{
+  display:grid;grid-template-columns:2.4fr .9fr 1.1fr .9fr 60px;gap:10px;align-items:center;
+}
+.cart-head{padding:14px 16px;color:var(--ink-3);font-size:13px;}
+.cart-line{padding:16px;border-top:1px solid var(--line);}
+.cl-prod{display:flex;gap:12px;align-items:center;}
+.cl-thumb{
+  width:70px;height:70px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:34px;flex-shrink:0;
+}
+.cl-name{font-size:13.5px;line-height:1.4;}
+.cl-name small{display:block;color:var(--ink-3);font-size:12px;margin-top:2px;}
+.cl-price{color:var(--ink-2);}
+.cl-total{color:var(--price);font-weight:700;}
+.cl-del{color:var(--ink-3);font-size:13px;}
+.cl-del:hover{color:var(--price);}
+.cart-summary{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;
+  padding:18px;margin-top:12px;flex-wrap:wrap;
+}
+.voucher{display:flex;gap:8px;align-items:center;}
+.voucher input{padding:9px 12px;border:1px solid var(--line);border-radius:4px;outline:none;width:170px;text-transform:uppercase;}
+.sum-right{display:flex;align-items:flex-end;gap:22px;margin-left:auto;flex-wrap:wrap;}
+.sum-list{font-size:13px;color:var(--ink-2);text-align:right;min-width:230px;}
+.sum-list div{display:flex;justify-content:space-between;gap:26px;padding:2px 0;}
+.sum-grand{font-size:15px;color:var(--ink);font-weight:700;border-top:1px solid var(--line);margin-top:5px;padding-top:6px;}
+.sum-grand span:last-child{color:var(--price);font-size:22px;}
+.voucher-hint{font-size:12px;color:var(--ink-3);margin-top:8px;}
+.voucher-hint b{color:var(--brand);}
+.free-bar{
+  margin-top:12px;background:var(--brand-light);border-radius:6px;padding:10px 14px;
+  font-size:13px;color:var(--brand-dark);
+}
+
+/* ── Checkout ────────────────────────────── */
+.checkout-grid{display:grid;grid-template-columns:1fr 340px;gap:12px;align-items:start;}
+.form-card{padding:20px;margin-bottom:12px;}
+.form-card h3{margin:0 0 4px;font-size:16px;}
+.form-card .fc-sub{color:var(--ink-3);font-size:12.5px;margin:0 0 16px;}
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:5px;}
+.field input,.field select,.field textarea{
+  width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:5px;outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brand);}
+.field .err{color:var(--price);font-size:12px;margin-top:4px;display:none;}
+.field.invalid input,.field.invalid select{border-color:var(--price);}
+.field.invalid .err{display:block;}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.opt-grid{display:grid;gap:10px;}
+.opt{
+  display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:6px;
+  padding:12px 14px;cursor:pointer;transition:.15s;
+}
+.opt:hover{border-color:var(--brand);}
+.opt.sel{border-color:var(--brand);background:var(--brand-light);}
+.opt input{margin:0;}
+.opt-ic{font-size:22px;}
+.opt b{display:block;font-size:13.5px;}
+.opt span{font-size:12px;color:var(--ink-3);}
+.summary-card{padding:18px;position:sticky;top:96px;}
+.summary-card h3{margin:0 0 14px;font-size:16px;}
+.sum-items{max-height:260px;overflow:auto;margin-bottom:12px;}
+.sum-item{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:12.5px;}
+.sum-item .si-thumb{width:40px;height:40px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.sum-item .si-name{flex:1;line-height:1.35;}
+.sum-item .si-amt{color:var(--price);font-weight:600;white-space:nowrap;}
+.sum-rows div{display:flex;justify-content:space-between;padding:4px 0;font-size:13px;color:var(--ink-2);}
+.sum-rows .total{
+  border-top:1px solid var(--line);margin-top:8px;padding-top:10px;
+  font-size:15px;font-weight:700;color:var(--ink);
+}
+.sum-rows .total span:last-child{color:var(--price);font-size:21px;}
+
+/* ── Order success / orders ──────────────── */
+.success{text-align:center;padding:44px 20px;margin-top:18px;}
+.success .tick{
+  width:74px;height:74px;border-radius:50%;background:var(--brand);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px;
+}
+.success h2{margin:0 0 6px;font-size:22px;}
+.success p{color:var(--ink-2);margin:4px 0;}
+.order-id{
+  display:inline-block;background:var(--price-soft);color:var(--price);font-weight:700;
+  padding:7px 16px;border-radius:6px;margin:12px 0;letter-spacing:.6px;
+}
+.track{display:flex;margin:26px auto 6px;max-width:640px;}
+.track-step{flex:1;text-align:center;position:relative;font-size:12px;color:var(--ink-3);}
+.track-step::before{
+  content:'';position:absolute;top:15px;left:-50%;width:100%;height:3px;background:var(--line);z-index:0;
+}
+.track-step:first-child::before{display:none;}
+.track-step.done::before{background:var(--brand);}
+.track-dot{
+  width:32px;height:32px;border-radius:50%;background:#fff;border:3px solid var(--line);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 6px;position:relative;z-index:1;
+  font-size:14px;
+}
+.track-step.done .track-dot{border-color:var(--brand);background:var(--brand);color:#fff;}
+.track-step.done{color:var(--brand-dark);font-weight:600;}
+
+.order-card{padding:16px;margin-bottom:12px;}
+.oc-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
+.oc-head b{font-size:14px;}
+.oc-head small{color:var(--ink-3);display:block;font-weight:400;}
+.status{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;}
+.st-prep{background:#fff4e0;color:#c77800;}
+.st-way{background:#e3f2fd;color:#0f7ba8;}
+.st-done{background:var(--brand-light);color:var(--brand-dark);}
+.oc-items{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.oc-chip{background:#fafafa;border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12.5px;}
+.oc-foot{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-2);flex-wrap:wrap;gap:8px;}
+.oc-foot b{color:var(--price);font-size:16px;}
+
+/* ── Footer ──────────────────────────────── */
+.footer{background:#fff;border-top:4px solid var(--brand);margin-top:26px;}
+.foot-top{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:34px 12px;}
+.foot-col h5{margin:0 0 12px;font-size:12.5px;letter-spacing:.6px;text-transform:uppercase;}
+.foot-col h5.mt{margin-top:18px;}
+.foot-col a{display:block;color:var(--ink-2);font-size:13px;padding:4px 0;}
+.foot-col a:hover{color:var(--brand);}
+.foot-col p{color:var(--ink-2);font-size:13px;margin:0 0 8px;line-height:1.6;}
+.pay-row{display:flex;flex-wrap:wrap;gap:6px;}
+.pay-row span{border:1px solid var(--line);border-radius:4px;padding:5px 9px;font-size:11.5px;color:var(--ink-2);}
+.foot-bottom{background:#fafafa;border-top:1px solid var(--line);padding:16px 0;text-align:center;font-size:12.5px;color:var(--ink-3);}
+
+/* ── Toast ───────────────────────────────── */
+.toast{
+  position:fixed;left:50%;bottom:38px;transform:translate(-50%,26px);
+  background:rgba(20,20,20,.92);color:#fff;padding:13px 24px;border-radius:8px;
+  font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:200;max-width:88vw;text-align:center;
+}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+
+/* ── Mobile bottom bar ───────────────────── */
+.mobilebar{display:none;}
+
+/* ── Responsive ──────────────────────────── */
+@media (max-width:1024px){
+  .prod-grid{grid-template-columns:repeat(4,1fr);}
+  .flash-row{grid-template-columns:repeat(4,1fr);}
+  .cat-grid{grid-template-columns:repeat(4,1fr);}
+  .cov-grid{grid-template-columns:repeat(3,1fr);}
+  .pd{grid-template-columns:1fr;}
+  .checkout-grid{grid-template-columns:1fr;}
+  .summary-card{position:static;}
+  .filters{position:static;}
+}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;}
+  .hero-side{grid-template-rows:auto;grid-template-columns:1fr 1fr;}
+  .badges{grid-template-columns:repeat(2,1fr);}
+  .foot-top{grid-template-columns:repeat(2,1fr);}
+  .catalog-body{grid-template-columns:1fr;}
+  .topbar{display:none;}
+  .slide-art{display:none;}
+  .slide-copy{max-width:100%;}
+}
+@media (max-width:640px){
+  .header-in{flex-wrap:wrap;gap:12px;}
+  .searchbox{order:3;flex-basis:100%;}
+  .logo-text b{font-size:18px;}
+  .prod-grid{grid-template-columns:repeat(2,1fr);}
+  .flash-row{grid-template-columns:repeat(2,1fr);}
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+  .cov-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-side{grid-template-columns:1fr;}
+  .badges{grid-template-columns:1fr;}
+  .cart-head{display:none;}
+  .cart-line{grid-template-columns:1fr auto;gap:12px;}
+  .cl-price{display:none;}
+  .f2{grid-template-columns:1fr;}
+  .slide h2{font-size:21px;}
+  .foot-top{grid-template-columns:1fr;}
+  body{padding-bottom:62px;}
+  .mobilebar{
+    display:grid;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;
+    background:#fff;border-top:1px solid var(--line);z-index:120;
+  }
+  .mobilebar button{
+    padding:8px 4px;font-size:11px;color:var(--ink-2);display:flex;flex-direction:column;
+    align-items:center;gap:2px;position:relative;
+  }
+  .mobilebar button span{font-size:19px;}
+  .m-badge{
+    position:absolute;top:2px;right:24%;background:var(--price);color:#fff;font-style:normal;
+    font-size:10px;border-radius:9px;padding:0 5px;font-weight:700;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   PRODUCT ARTWORK (inline SVG illustrations)
+   ══════════════════════════════════════════════════════════ */
+.art{display:block;width:100%;height:100%;}
+.pthumb .art{width:84%;height:84%;transition:transform .18s ease;}
+.pcard:hover .art{transform:scale(1.06);}
+.pd-gallery .pd-main .art{width:78%;height:78%;}
+.pd-thumbs .art{width:88%;height:88%;}
+.ticon{font-size:26px;line-height:1;}
+.cl-thumb .art,.si-thumb .art{width:90%;height:90%;}
+.oc-chip{display:inline-flex;align-items:center;gap:6px;}
+.oc-chip .art{width:22px;height:22px;flex-shrink:0;}
+.cat-emoji{line-height:1;}
+
+/* ══════════════════════════════════════════════════════════
+   PHONE + PC COMPATIBILITY PASS
+   ══════════════════════════════════════════════════════════ */
+html{-webkit-text-size-adjust:100%;}
+img,svg{max-width:100%;}
+input,select,textarea,button{max-width:100%;}
+
+/* mobile-only filter drawer toggle */
+.filter-toggle{
+  display:none;width:100%;align-items:center;justify-content:center;gap:8px;
+  background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px;
+  font-weight:600;color:var(--brand-dark);box-shadow:var(--shadow);margin-bottom:10px;
+}
+.filter-toggle:active{background:var(--brand-light);}
+
+/* ── large desktop ── */
+@media (min-width:1400px){
+  .wrap{max-width:1280px;}
+  .prod-grid{grid-template-columns:repeat(6,1fr);}
+}
+
+/* ── tablet ── */
+@media (max-width:900px){
+  .filter-toggle{display:flex;}
+  .filters{display:none;}
+  .filters.open{display:block;}
+  .catalog-body{grid-template-columns:1fr;}
+  .sortbar{gap:6px;}
+  .sort-btn{flex:1;min-width:88px;}
+  .sort-select{flex:1;min-width:120px;}
+  .result-count{width:100%;text-align:right;margin-left:0;}
+}
+
+/* ── phone + small tablet: bottom nav ── */
+@media (max-width:820px){
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px));}
+  .mobilebar{
+    display:grid;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;
+    background:#fff;border-top:1px solid var(--line);z-index:120;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    box-shadow:0 -2px 10px rgba(0,0,0,.06);
+  }
+  .mobilebar button{
+    padding:9px 4px 8px;font-size:11px;color:var(--ink-2);display:flex;flex-direction:column;
+    align-items:center;gap:2px;position:relative;min-height:52px;
+  }
+  .mobilebar button span{font-size:20px;}
+  .m-badge{
+    position:absolute;top:3px;right:26%;background:var(--price);color:#fff;font-style:normal;
+    font-size:10px;border-radius:9px;padding:0 5px;font-weight:700;
+  }
+  .hot-keys{overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
+  .hot-keys::-webkit-scrollbar{display:none;}
+  .qty button{width:40px;height:40px;}
+  .qty input{height:40px;width:60px;}
+  .btn{padding:12px 20px;}
+  .btn-lg{padding:14px 24px;}
+  .pd-actions .btn{flex:1;}
+}
+
+/* ── phone ── */
+@media (max-width:640px){
+  .wrap{padding:0 10px;}
+  .block{padding:12px;margin-top:12px;}
+  .cat-grid{grid-template-columns:repeat(4,1fr);}
+  .cat-emoji{font-size:26px;margin-bottom:5px;}
+  .cat-name{font-size:11.5px;}
+  .cat-sub{display:none;}
+  .hero{padding-top:12px;}
+  .slide{padding:22px 20px;min-height:190px;}
+  .slide h2{font-size:20px;}
+  .slide p{font-size:13px;}
+  .slider-dots{left:20px;}
+  .flash-head{gap:10px;}
+  .flash-title{font-size:15px;}
+  .see-all{margin-left:0;}
+  .pname{font-size:12.5px;}
+  .pprice b{font-size:16px;}
+
+  /* product detail */
+  .pd{padding:14px;gap:16px;}
+  .pd-gallery .pd-main{max-height:300px;}
+  .pd-info h1{font-size:18px;}
+  .pd-price{padding:12px;}
+  .pd-price .now{font-size:26px;}
+  .pd-row>span:first-child{width:100%;}
+  .pd-seller{margin:0 14px 14px;}
+  .pd-desc{padding:0 14px 18px;}
+  .spec-table td:first-child{width:120px;}
+
+  /* cart rows stack */
+  .cart-line{grid-template-columns:1fr auto;row-gap:10px;}
+  .cart-line>*:nth-child(1){grid-column:1 / -1;}
+  .cart-line>*:nth-child(2){display:none;}
+  .cart-line>*:nth-child(4){justify-self:end;font-size:16px;}
+  .cart-line>*:nth-child(5){grid-column:1 / -1;justify-self:end;}
+  .cl-thumb{width:58px;height:58px;}
+  .cart-summary{flex-direction:column;align-items:stretch;}
+  .sum-right{margin-left:0;flex-direction:column;align-items:stretch;gap:12px;}
+  .sum-list{min-width:0;}
+  .cart-summary .btn{width:100%;}
+  .voucher input{flex:1;width:auto;}
+
+  /* checkout */
+  .form-card{padding:16px;}
+  .summary-card{padding:16px;}
+  .success{padding:28px 14px;}
+  .track-step{font-size:10.5px;}
+  .track-dot{width:28px;height:28px;font-size:12px;}
+  .order-card{padding:14px;}
+  .oc-chip{font-size:11.5px;padding:3px 10px;}
+}
+
+/* ── small phone ── */
+@media (max-width:380px){
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+  .prod-grid,.flash-row{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .logo-text b{font-size:16px;}
+  .logo-text small{font-size:10px;}
+  .logo-mark{font-size:22px;}
+  .slide h2{font-size:18px;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════ TOP STRIP ══════════ -->
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <div class="topbar-left">
+      <span>Seller Centre</span><i>|</i>
+      <span>Palengke Partners</span><i>|</i>
+      <span>Download App</span><i>|</i>
+      <span>Follow us on Facebook</span>
+    </div>
+    <div class="topbar-right">
+      <span>🔔 Notifications</span><i>|</i>
+      <span>❓ Help</span><i>|</i>
+      <span class="tb-strong">Juan D.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="header">
+  <div class="wrap header-in">
+    <a class="logo" href="#" data-nav="home">
+      <span class="logo-mark">🐟🥬</span>
+      <span class="logo-text">
+        <b>Fresh Catch</b>
+        <small>and Green Supply Hub</small>
+      </span>
+    </a>
+
+    <div class="searchbox">
+      <input id="searchInput" type="text" placeholder="Search bangus, hipon, pechay, sinigang pack..." autocomplete="off" />
+      <button id="searchBtn" class="search-btn" aria-label="Search">🔍</button>
+      <div class="hot-keys">
+        <a href="#" data-hot="Bangus">Bangus</a>
+        <a href="#" data-hot="Hipon">Hipon</a>
+        <a href="#" data-hot="Pechay">Pechay</a>
+        <a href="#" data-hot="Sinigang">Sinigang Pack</a>
+        <a href="#" data-hot="Kamatis">Kamatis</a>
+      </div>
+    </div>
+
+    <button class="cart-btn" data-nav="cart" aria-label="Cart">
+      🛒<span id="cartCount" class="cart-badge">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- ══════════ MAIN ══════════ -->
+<main id="app">
+
+  <!-- ─────── HOME VIEW ─────── -->
+  <section class="view" id="view-home">
+
+    <!-- Hero -->
+    <div class="wrap hero">
+      <div class="hero-slider" id="heroSlider">
+        <div class="slide s1">
+          <div class="slide-copy">
+            <span class="pill">Araw-araw sariwa</span>
+            <h2>Galing Laguna Lake,<br />Dumadaan sa Yelo,<br />Diretso sa Bahay Mo</h2>
+            <p>Same-day delivery ng isda at gulay sa buong Binangonan, Rizal.</p>
+            <button class="btn btn-light" data-scroll="catalog">Shop Now</button>
+          </div>
+          <div class="slide-art">🐟</div>
+        </div>
+        <div class="slide s2">
+          <div class="slide-copy">
+            <span class="pill">Bagong ani</span>
+            <h2>Gulay na Bagong<br />Pitas Kaninang Umaga</h2>
+            <p>Direct mula sa mga magsasaka ng Rizal at Laguna. Walang pabalik-balik sa bodega.</p>
+            <button class="btn btn-light" data-scroll="catalog">Tingnan ang Gulay</button>
+          </div>
+          <div class="slide-art">🥬</div>
+        </div>
+        <div class="slide s3">
+          <div class="slide-copy">
+            <span class="pill">Libreng delivery</span>
+            <h2>₱500 na Order,<br />Libre ang Padala</h2>
+            <p>Para sa lahat ng barangay sa Binangonan. COD, GCash, at Maya tanggap namin.</p>
+            <button class="btn btn-light" data-scroll="catalog">Mag-order Na</button>
+          </div>
+          <div class="slide-art">🚚</div>
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+
+      <div class="hero-side">
+        <div class="side-card sc1">
+          <div class="sc-icon">❄️</div>
+          <div><b>Cold Chain Delivery</b><span>Naka-yelo at insulated box hanggang pintuan mo</span></div>
+        </div>
+        <div class="side-card sc2">
+          <div class="sc-icon">⏱️</div>
+          <div><b>Same-Day sa Binangonan</b><span>Order bago 10AM, dating bago mag-hapunan</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service badges -->
+    <div class="wrap badges">
+      <div class="badge-item"><span>🎣</span><div><b>Direct sa Mangingisda</b><small>Pila Pila &amp; Kalawaan catch</small></div></div>
+      <div class="badge-item"><span>🌱</span><div><b>Direct sa Magsasaka</b><small>Walang dagdag na middleman</small></div></div>
+      <div class="badge-item"><span>💵</span><div><b>Cash on Delivery</b><small>Bayad kapag dumating na</small></div></div>
+      <div class="badge-item"><span>🔄</span><div><b>Fresh Guarantee</b><small>Palit o refund kung hindi sariwa</small></div></div>
+    </div>
+
+    <!-- Categories -->
+    <div class="wrap card block">
+      <h3 class="block-title">CATEGORIES</h3>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+
+    <!-- Flash deals -->
+    <div class="wrap card block flash">
+      <div class="flash-head">
+        <h3 class="flash-title">⚡ PALENGKE FLASH DEALS</h3>
+        <div class="countdown">
+          <span>Ends in</span>
+          <b id="cdH">00</b>:<b id="cdM">00</b>:<b id="cdS">00</b>
+        </div>
+        <a href="#" class="see-all" data-scroll="catalog">See All ›</a>
+      </div>
+      <div class="flash-row" id="flashRow"></div>
+    </div>
+
+    <!-- Catalog -->
+    <div class="wrap block" id="catalog">
+      <div class="card catalog-head">
+        <h3 class="block-title">DAILY PICKS — SARIWA NGAYONG ARAW</h3>
+      </div>
+
+      <div class="catalog-body">
+        <div>
+        <button class="filter-toggle" id="filterToggle">⚙️ Filters</button>
+        <aside class="filters card">
+          <h4>Filters</h4>
+
+          <div class="f-group">
+            <label class="f-label">Category</label>
+            <div id="filterCats" class="f-cats"></div>
+          </div>
+
+          <div class="f-group">
+            <label class="f-label">Price Range (₱)</label>
+            <div class="price-row">
+              <input type="number" id="minPrice" placeholder="Min" min="0" />
+              <span>—</span>
+              <input type="number" id="maxPrice" placeholder="Max" min="0" />
+            </div>
+            <button class="btn btn-primary btn-sm" id="applyPrice">Apply</button>
+          </div>
+
+          <div class="f-group">
+            <label class="f-label">Rating</label>
+            <div id="filterRating" class="f-rate">
+              <button data-rate="0" class="active">All</button>
+              <button data-rate="4">4★ &amp; up</button>
+              <button data-rate="4.5">4.5★ &amp; up</button>
+            </div>
+          </div>
+
+          <div class="f-group">
+            <label class="f-label">Availability</label>
+            <label class="chk"><input type="checkbox" id="inStockOnly" /> In stock lang</label>
+            <label class="chk"><input type="checkbox" id="onSaleOnly" /> May diskwento</label>
+          </div>
+
+          <button class="btn btn-ghost btn-sm block-btn" id="resetFilters">Reset Filters</button>
+        </aside>
+        </div>
+
+        <div class="catalog-main">
+          <div class="sortbar card">
+            <span>Sort by</span>
+            <button class="sort-btn active" data-sort="popular">Popular</button>
+            <button class="sort-btn" data-sort="latest">Latest</button>
+            <button class="sort-btn" data-sort="sold">Top Sales</button>
+            <select id="priceSort" class="sort-select">
+              <option value="">Price</option>
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
+            <span class="result-count" id="resultCount"></span>
+          </div>
+
+          <div class="prod-grid" id="prodGrid"></div>
+          <div class="empty" id="emptyState" hidden>
+            <span>🔍</span>
+            <p>Walang nahanap na produkto.</p>
+            <button class="btn btn-primary btn-sm" id="clearSearch">Clear search</button>
+          </div>
+          <div class="load-more-wrap">
+            <button class="btn btn-ghost" id="loadMore">Load More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coverage -->
+    <div class="wrap card block coverage">
+      <h3 class="block-title">DELIVERY COVERAGE — BINANGONAN, RIZAL</h3>
+      <p class="cov-sub">Naghahatid kami sa mga barangay ng Binangonan. Piliin ang inyong barangay sa checkout para makita ang delivery fee.</p>
+      <div class="cov-grid" id="covGrid"></div>
+    </div>
+  </section>
+
+  <!-- ─────── PRODUCT VIEW ─────── -->
+  <section class="view" id="view-product" hidden></section>
+
+  <!-- ─────── CART VIEW ─────── -->
+  <section class="view" id="view-cart" hidden></section>
+
+  <!-- ─────── CHECKOUT VIEW ─────── -->
+  <section class="view" id="view-checkout" hidden></section>
+
+  <!-- ─────── ORDERS VIEW ─────── -->
+  <section class="view" id="view-orders" hidden></section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="wrap foot-top">
+    <div class="foot-col">
+      <h5>CUSTOMER SERVICE</h5>
+      <a href="#">Help Centre</a>
+      <a href="#">How to Order</a>
+      <a href="#">Payment Methods</a>
+      <a href="#">Fresh Guarantee</a>
+      <a href="#">Returns &amp; Refunds</a>
+    </div>
+    <div class="foot-col">
+      <h5>ABOUT US</h5>
+      <a href="#">Our Story</a>
+      <a href="#">Partner Fisherfolk</a>
+      <a href="#">Partner Farmers</a>
+      <a href="#">Wholesale / Bulk Orders</a>
+      <a href="#">Careers</a>
+    </div>
+    <div class="foot-col">
+      <h5>PAYMENT</h5>
+      <div class="pay-row"><span>COD</span><span>GCash</span><span>Maya</span><span>BPI</span><span>BDO</span></div>
+      <h5 class="mt">DELIVERY</h5>
+      <div class="pay-row"><span>Own Fleet</span><span>Tricycle</span><span>Motor</span><span>L300</span></div>
+    </div>
+    <div class="foot-col">
+      <h5>CONTACT</h5>
+      <p>Stall 12, Binangonan Public Market<br />Brgy. Calumpang, Binangonan, Rizal 1940</p>
+      <p>📞 0917 000 0000 · ☎️ (02) 8000 0000</p>
+      <p>✉️ freshcatch.binangonan@email.com</p>
+      <p>🕕 Bukas: 5:00 AM – 7:00 PM araw-araw</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="wrap">
+      © 2026 Fresh Catch and Green Supply Hub · Binangonan, Rizal · Establishment of Fish and Vegetable Supply and Delivery Services
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile bottom bar -->
+<nav class="mobilebar">
+  <button data-nav="home"><span>🏠</span>Home</button>
+  <button data-scroll="catalog"><span>🧺</span>Shop</button>
+  <button data-nav="cart"><span>🛒</span>Cart<i id="mCartCount" class="m-badge">0</i></button>
+  <button data-nav="orders"><span>📦</span>Orders</button>
+</nav>
+
+<div id="toast" class="toast"></div>
+
+<script>
+/* ============================================================
+   Fresh Catch and Green Supply Hub — catalog data
+   Synthetic demo data for the storefront (no backend required).
+   Prices in PHP. Consumed by the storefront logic below.
+   ============================================================ */
+
+const FCGS_CATEGORIES = [
+  { id: 'fish',     name: 'Fresh Fish',        icon: '🐟', sub: 'Isda' },
+  { id: 'seafood',  name: 'Seafood & Shells',  icon: '🦐', sub: 'Hipon, Alimasag' },
+  { id: 'leafy',    name: 'Leafy Greens',      icon: '🥬', sub: 'Dahong gulay' },
+  { id: 'root',     name: 'Root Crops',        icon: '🥕', sub: 'Ugat na gulay' },
+  { id: 'fruitveg', name: 'Fruit Vegetables',  icon: '🍅', sub: 'Prutas-gulay' },
+  { id: 'herbs',    name: 'Herbs & Spices',    icon: '🌶️', sub: 'Rekado' },
+  { id: 'bundle',   name: 'Meal Bundles',      icon: '🧺', sub: 'Ulam packs' },
+  { id: 'dried',    name: 'Dried & Preserved', icon: '🐠', sub: 'Tuyo, Daing' }
+];
+
+/* bg = gradient tile index 1..8 used by the CSS product thumbnail */
+const FCGS_PRODUCTS = [
+  /* ---------- FRESH FISH ---------- */
+  { id:'fsh-01', name:'Bangus (Milkfish) — Malaki', cat:'fish', price:180, old:210, unit:'kg', sold:1240, rating:4.8, stock:45, emoji:'🐟', bg:1, origin:'Laguna Lake, Binangonan', seller:'Aling Nena Fish Stall', flash:true,  isNew:false, desc:'Sariwang bangus na inaani mula sa fishpen sa Laguna Lake. Malinis na hasang, matigas ang laman. Pwedeng ipa-scale at gut nang libre.' },
+  { id:'fsh-02', name:'Tilapia — Live/Fresh', cat:'fish', price:150, old:170, unit:'kg', sold:2130, rating:4.7, stock:80, emoji:'🐟', bg:2, origin:'Binangonan Fish Cages', seller:'Pila Pila Fisherfolk Coop', flash:true, isNew:false, desc:'Buhay pa nang ma-harvest kaninang madaling araw. Perfect sa sinigang, paksiw, o inihaw.' },
+  { id:'fsh-03', name:'Galunggong (Round Scad)', cat:'fish', price:190, old:220, unit:'kg', sold:1890, rating:4.6, stock:38, emoji:'🐟', bg:3, origin:'Navotas Fish Port', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Klasikong GG — malutong kapag pinirito, masarap din sa paksiw at ginataan.' },
+  { id:'fsh-04', name:'Tuna Panga (Jaw)', cat:'fish', price:280, old:330, unit:'kg', sold:640, rating:4.9, stock:16, emoji:'🐟', bg:4, origin:'General Santos', seller:'Fresh Catch Main', flash:true, isNew:false, desc:'Frozen-fresh na panga ng tuna. Best sa inihaw na may toyo-calamansi.' },
+  { id:'fsh-05', name:'Hito (Catfish) — Buhay', cat:'fish', price:160, old:0, unit:'kg', sold:410, rating:4.5, stock:24, emoji:'🐟', bg:5, origin:'Cardona, Rizal', seller:'Rizal Freshwater Farms', flash:false, isNew:true, desc:'Buhay na hito, malinis ang alaga. Sarap sa sinigang sa miso at pritong hito.' },
+  { id:'fsh-06', name:'Dalag (Mudfish)', cat:'fish', price:220, old:0, unit:'kg', sold:280, rating:4.6, stock:12, emoji:'🐟', bg:6, origin:'Laguna Lake', seller:'Pila Pila Fisherfolk Coop', flash:false, isNew:false, desc:'Para sa tinolang dalag at ginataang dalag. Malaman at walang lansa.' },
+  { id:'fsh-07', name:'Ayungin', cat:'fish', price:240, old:270, unit:'kg', sold:520, rating:4.7, stock:9, emoji:'🐟', bg:7, origin:'Laguna Lake, Binangonan', seller:'Aling Nena Fish Stall', flash:false, isNew:false, desc:'Bihirang huli mula mismo sa lawa ng Binangonan. Crispy kapag pinirito.' },
+  { id:'fsh-08', name:'Bisugo (Threadfin Bream)', cat:'fish', price:260, old:0, unit:'kg', sold:330, rating:4.5, stock:20, emoji:'🐟', bg:8, origin:'Navotas Fish Port', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Puting laman, matamis. Masarap sa sinigang o escabeche.' },
+  { id:'fsh-09', name:'Salmon Belly — Trim', cat:'fish', price:340, old:390, unit:'kg', sold:760, rating:4.8, stock:14, emoji:'🐟', bg:1, origin:'Imported (Norway)', seller:'Fresh Catch Main', flash:false, isNew:true, desc:'Frozen salmon belly trim. Ihaw, sinigang, o sisig — laging hit.' },
+  { id:'fsh-10', name:'Maya-maya (Red Snapper)', cat:'fish', price:420, old:460, unit:'kg', sold:190, rating:4.9, stock:7, emoji:'🐟', bg:2, origin:'Quezon Coast', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Whole red snapper, panghandaan. Steamed o sweet & sour.' },
+  { id:'fsh-11', name:'Tamban (Sardines)', cat:'fish', price:110, old:130, unit:'kg', sold:980, rating:4.3, stock:52, emoji:'🐟', bg:3, origin:'Navotas Fish Port', seller:'Fresh Catch Main', flash:true, isNew:false, desc:'Mura at masustansya. Perfect sa paksiw at bottled sardines.' },
+  { id:'fsh-12', name:'Pampano', cat:'fish', price:320, old:0, unit:'kg', sold:150, rating:4.6, stock:11, emoji:'🐟', bg:4, origin:'Bataan', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Malambot na laman, kaunti ang tinik. Ihaw o steamed with tausi.' },
+
+  /* ---------- SEAFOOD & SHELLFISH ---------- */
+  { id:'sea-01', name:'Hipon (Suahe) — Medium', cat:'seafood', price:420, old:480, unit:'kg', sold:870, rating:4.8, stock:22, emoji:'🦐', bg:5, origin:'Bulacan Ponds', seller:'Fresh Catch Main', flash:true, isNew:false, desc:'Sariwang suahe, matamis ang laman. Halabos, sinigang, o camaron rebosado.' },
+  { id:'sea-02', name:'Alimasag (Blue Crab)', cat:'seafood', price:380, old:430, unit:'kg', sold:540, rating:4.7, stock:18, emoji:'🦀', bg:6, origin:'Manila Bay', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Buhay na alimasag na may aligue. Ginataan o steamed.' },
+  { id:'sea-03', name:'Tahong (Mussels)', cat:'seafood', price:120, old:140, unit:'kg', sold:1120, rating:4.6, stock:60, emoji:'🦪', bg:7, origin:'Bacoor, Cavite', seller:'Fresh Catch Main', flash:true, isNew:false, desc:'Malinis na tahong, nabanlawan na. Baked tahong o tinolang tahong.' },
+  { id:'sea-04', name:'Pusit (Squid) — Bisaya', cat:'seafood', price:340, old:0, unit:'kg', sold:660, rating:4.7, stock:19, emoji:'🦑', bg:8, origin:'Quezon Coast', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Malinis na pusit, may itlog. Adobong pusit o inihaw na may kamatis-sibuyas.' },
+  { id:'sea-05', name:'Talaba (Oysters)', cat:'seafood', price:150, old:0, unit:'kg', sold:390, rating:4.4, stock:26, emoji:'🦪', bg:1, origin:'Binakayan, Cavite', seller:'Fresh Catch Main', flash:false, isNew:true, desc:'Sariwang talaba sa talukap. Baked o kilawin.' },
+  { id:'sea-06', name:'Suso sa Lawa (Snails)', cat:'seafood', price:90, old:110, unit:'kg', sold:280, rating:4.2, stock:33, emoji:'🐌', bg:2, origin:'Laguna Lake, Binangonan', seller:'Pila Pila Fisherfolk Coop', flash:false, isNew:false, desc:'Ginataang suso — paboritong ulam sa baybayin ng Binangonan.' },
+  { id:'sea-07', name:'Bangus Belly — Boneless', cat:'seafood', price:290, old:340, unit:'kg', sold:720, rating:4.9, stock:21, emoji:'🐟', bg:3, origin:'Laguna Lake, Binangonan', seller:'Aling Nena Fish Stall', flash:true, isNew:false, desc:'Boneless belly cut, ready to cook. Pinirito o sinigang na walang abala.' },
+
+  /* ---------- LEAFY GREENS ---------- */
+  { id:'lfy-01', name:'Pechay Tagalog — Bagong Pitas', cat:'leafy', price:60, old:75, unit:'kg', sold:1560, rating:4.7, stock:70, emoji:'🥬', bg:4, origin:'Tanay, Rizal', seller:'Rizal Highland Farms', flash:true, isNew:false, desc:'Malutong at berde. Perfect sa nilaga, misua, at chopsuey.' },
+  { id:'lfy-02', name:'Kangkong — Bundle', cat:'leafy', price:20, old:25, unit:'bundle', sold:2400, rating:4.6, stock:120, emoji:'🥬', bg:5, origin:'Binangonan, Rizal', seller:'Barangay Growers Group', flash:true, isNew:false, desc:'Isang bigkis ng sariwang kangkong. Adobo, sinigang, o crispy kangkong.' },
+  { id:'lfy-03', name:'Pechay Baguio (Cabbage)', cat:'leafy', price:85, old:100, unit:'kg', sold:920, rating:4.6, stock:44, emoji:'🥬', bg:6, origin:'Benguet', seller:'Highland Produce Traders', flash:false, isNew:false, desc:'Matibay na repolyo mula Benguet. Chopsuey, lumpia, at nilaga.' },
+  { id:'lfy-04', name:'Mustasa (Mustard Greens)', cat:'leafy', price:55, old:0, unit:'kg', sold:410, rating:4.4, stock:29, emoji:'🥬', bg:7, origin:'Tanay, Rizal', seller:'Rizal Highland Farms', flash:false, isNew:false, desc:'Para sa burong mustasa at sinigang. Bagong pitas ngayong umaga.' },
+  { id:'lfy-05', name:'Malunggay — Bundle', cat:'leafy', price:15, old:0, unit:'bundle', sold:1780, rating:4.8, stock:150, emoji:'🌿', bg:8, origin:'Binangonan, Rizal', seller:'Barangay Growers Group', flash:false, isNew:false, desc:'Sagana sa bitamina. Tinola, monggo, at ginisang munggo.' },
+  { id:'lfy-06', name:'Alugbati — Bundle', cat:'leafy', price:20, old:0, unit:'bundle', sold:530, rating:4.5, stock:64, emoji:'🌿', bg:1, origin:'Cardona, Rizal', seller:'Barangay Growers Group', flash:false, isNew:true, desc:'Malamig sa tiyan, masarap sa sinigang at monggo.' },
+  { id:'lfy-07', name:'Lettuce (Romaine)', cat:'leafy', price:180, old:210, unit:'kg', sold:340, rating:4.7, stock:18, emoji:'🥬', bg:2, origin:'Benguet', seller:'Highland Produce Traders', flash:false, isNew:true, desc:'Crisp romaine para sa salad at sandwich. Naka-chilled ang delivery.' },
+  { id:'lfy-08', name:'Sili Leaves (Dahon ng Sili)', cat:'leafy', price:25, old:0, unit:'bundle', sold:260, rating:4.3, stock:48, emoji:'🌿', bg:3, origin:'Binangonan, Rizal', seller:'Barangay Growers Group', flash:false, isNew:false, desc:'Para sa tinolang manok at ginataang gulay.' },
+
+  /* ---------- ROOT CROPS ---------- */
+  { id:'rot-01', name:'Carrots — Baguio', cat:'root', price:95, old:120, unit:'kg', sold:1340, rating:4.7, stock:58, emoji:'🥕', bg:4, origin:'Benguet', seller:'Highland Produce Traders', flash:true, isNew:false, desc:'Matamis at matigas na carrots. Nilaga, chopsuey, at menudo.' },
+  { id:'rot-02', name:'Patatas (Potato)', cat:'root', price:90, old:105, unit:'kg', sold:1220, rating:4.6, stock:66, emoji:'🥔', bg:5, origin:'Benguet', seller:'Highland Produce Traders', flash:false, isNew:false, desc:'Table potatoes, pantay-pantay ang laki. Fries, menudo, at kaldereta.' },
+  { id:'rot-03', name:'Kamote (Sweet Potato)', cat:'root', price:60, old:0, unit:'kg', sold:880, rating:4.5, stock:74, emoji:'🍠', bg:6, origin:'Teresa, Rizal', seller:'Rizal Highland Farms', flash:false, isNew:false, desc:'Matamis na kamote — nilaga, ginataan, o kamote-cue.' },
+  { id:'rot-04', name:'Sibuyas Pula (Red Onion)', cat:'root', price:120, old:160, unit:'kg', sold:2050, rating:4.6, stock:49, emoji:'🧅', bg:7, origin:'Nueva Ecija', seller:'Central Luzon Traders', flash:true, isNew:false, desc:'Local red onion, matigas at hindi tubig. Presyo bumaba ngayong linggo.' },
+  { id:'rot-05', name:'Bawang (Garlic) — Native', cat:'root', price:180, old:210, unit:'kg', sold:1410, rating:4.7, stock:37, emoji:'🧄', bg:8, origin:'Ilocos Norte', seller:'Central Luzon Traders', flash:false, isNew:false, desc:'Native na bawang — mas matapang ang amoy at lasa kaysa imported.' },
+  { id:'rot-06', name:'Luya (Ginger)', cat:'root', price:110, old:0, unit:'kg', sold:690, rating:4.5, stock:41, emoji:'🫚', bg:1, origin:'Quezon', seller:'Central Luzon Traders', flash:false, isNew:false, desc:'Para sa tinola, salabat, at ginataan. Sariwa at makatas.' },
+  { id:'rot-07', name:'Gabi (Taro)', cat:'root', price:70, old:0, unit:'kg', sold:420, rating:4.4, stock:35, emoji:'🥔', bg:2, origin:'Laguna', seller:'Rizal Highland Farms', flash:false, isNew:false, desc:'Pampalapot ng sinigang at pang-laing.' },
+  { id:'rot-08', name:'Singkamas (Turnip)', cat:'root', price:65, old:80, unit:'kg', sold:310, rating:4.3, stock:28, emoji:'🥔', bg:3, origin:'Batangas', seller:'Rizal Highland Farms', flash:false, isNew:true, desc:'Malamig at matamis. Fresh lumpia at pang-meryenda.' },
+
+  /* ---------- FRUIT VEGETABLES ---------- */
+  { id:'frv-01', name:'Kamatis (Tomato)', cat:'fruitveg', price:70, old:90, unit:'kg', sold:1980, rating:4.6, stock:82, emoji:'🍅', bg:4, origin:'Nueva Ecija', seller:'Central Luzon Traders', flash:true, isNew:false, desc:'Pulang-pula at makatas. Ensalada, ginisa, at sarsa.' },
+  { id:'frv-02', name:'Talong (Eggplant)', cat:'fruitveg', price:75, old:95, unit:'kg', sold:1450, rating:4.6, stock:61, emoji:'🍆', bg:5, origin:'Teresa, Rizal', seller:'Rizal Highland Farms', flash:true, isNew:false, desc:'Mahaba at makinis. Tortang talong, pinakbet, at inihaw.' },
+  { id:'frv-03', name:'Ampalaya (Bitter Gourd)', cat:'fruitveg', price:80, old:0, unit:'kg', sold:760, rating:4.4, stock:39, emoji:'🥒', bg:6, origin:'Tanay, Rizal', seller:'Rizal Highland Farms', flash:false, isNew:false, desc:'Berde at makapal ang laman. Ginisang ampalaya with itlog.' },
+  { id:'frv-04', name:'Sitaw (String Beans)', cat:'fruitveg', price:70, old:85, unit:'kg', sold:1130, rating:4.5, stock:47, emoji:'🫛', bg:7, origin:'Binangonan, Rizal', seller:'Barangay Growers Group', flash:false, isNew:false, desc:'Malutong na sitaw. Adobong sitaw, pinakbet, at ginataan.' },
+  { id:'frv-05', name:'Kalabasa (Squash) — Hiwa', cat:'fruitveg', price:45, old:60, unit:'kg', sold:1290, rating:4.6, stock:55, emoji:'🎃', bg:8, origin:'Cardona, Rizal', seller:'Rizal Highland Farms', flash:true, isNew:false, desc:'Nakahiwa na, ready to cook. Ginataang kalabasa at pinakbet.' },
+  { id:'frv-06', name:'Okra', cat:'fruitveg', price:60, old:0, unit:'kg', sold:640, rating:4.3, stock:44, emoji:'🌿', bg:1, origin:'Binangonan, Rizal', seller:'Barangay Growers Group', flash:false, isNew:false, desc:'Bata pa at malambot. Nilaga, inihaw, o sawsaw sa bagoong.' },
+  { id:'frv-07', name:'Sayote (Chayote)', cat:'fruitveg', price:40, old:55, unit:'kg', sold:980, rating:4.4, stock:69, emoji:'🥒', bg:2, origin:'Benguet', seller:'Highland Produce Traders', flash:false, isNew:false, desc:'Mura at versatile. Tinola, nilaga, at ginisa.' },
+  { id:'frv-08', name:'Pipino (Cucumber)', cat:'fruitveg', price:55, old:0, unit:'kg', sold:520, rating:4.4, stock:51, emoji:'🥒', bg:3, origin:'Batangas', seller:'Rizal Highland Farms', flash:false, isNew:false, desc:'Presko at makatas. Ensalada at atsara.' },
+  { id:'frv-09', name:'Upo (Bottle Gourd)', cat:'fruitveg', price:45, old:0, unit:'kg', sold:430, rating:4.3, stock:36, emoji:'🥒', bg:4, origin:'Teresa, Rizal', seller:'Rizal Highland Farms', flash:false, isNew:false, desc:'Malambot at matubig. Ginisang upo with hibi o sotanghon.' },
+  { id:'frv-10', name:'Repolyo (Cabbage) — Rareball', cat:'fruitveg', price:80, old:100, unit:'kg', sold:1010, rating:4.5, stock:53, emoji:'🥬', bg:5, origin:'Benguet', seller:'Highland Produce Traders', flash:false, isNew:false, desc:'Matigas at siksik. Chopsuey, lumpia, at nilagang baka.' },
+  { id:'frv-11', name:'Baguio Beans', cat:'fruitveg', price:120, old:145, unit:'kg', sold:470, rating:4.6, stock:24, emoji:'🫛', bg:6, origin:'Benguet', seller:'Highland Produce Traders', flash:false, isNew:true, desc:'Crisp beans mula sa taas. Ginisa o sa beef stir-fry.' },
+
+  /* ---------- HERBS & SPICES ---------- */
+  { id:'hrb-01', name:'Siling Labuyo', cat:'herbs', price:400, old:480, unit:'kg', sold:380, rating:4.7, stock:8, emoji:'🌶️', bg:7, origin:'Quezon', seller:'Central Luzon Traders', flash:true, isNew:false, desc:'Maanghang na labuyo. Pwede rin per 100g order.' },
+  { id:'hrb-02', name:'Siling Haba (Panigang)', cat:'herbs', price:120, old:0, unit:'kg', sold:610, rating:4.5, stock:27, emoji:'🌶️', bg:8, origin:'Nueva Ecija', seller:'Central Luzon Traders', flash:false, isNew:false, desc:'Pang-sinigang at pang-bicol express.' },
+  { id:'hrb-03', name:'Dahon ng Sibuyas (Spring Onion)', cat:'herbs', price:30, old:40, unit:'bundle', sold:1240, rating:4.6, stock:88, emoji:'🌿', bg:1, origin:'Benguet', seller:'Highland Produce Traders', flash:false, isNew:false, desc:'Pang-garnish sa lugaw, pancit, at mami.' },
+  { id:'hrb-04', name:'Wansoy (Cilantro)', cat:'herbs', price:35, old:0, unit:'bundle', sold:520, rating:4.4, stock:42, emoji:'🌿', bg:2, origin:'Benguet', seller:'Highland Produce Traders', flash:false, isNew:false, desc:'Mabango at sariwa. Para sa mami, sinigang, at salsa.' },
+  { id:'hrb-05', name:'Tanglad (Lemongrass)', cat:'herbs', price:25, old:0, unit:'bundle', sold:340, rating:4.5, stock:56, emoji:'🌾', bg:3, origin:'Binangonan, Rizal', seller:'Barangay Growers Group', flash:false, isNew:false, desc:'Pang-inihaw na manok at pang-salabat.' },
+  { id:'hrb-06', name:'Kalamansi', cat:'herbs', price:80, old:95, unit:'kg', sold:1420, rating:4.7, stock:63, emoji:'🍋', bg:4, origin:'Quezon', seller:'Central Luzon Traders', flash:false, isNew:false, desc:'Makatas na kalamansi. Sawsawan, juice, at pang-marinate.' },
+
+  /* ---------- MEAL BUNDLES ---------- */
+  { id:'bnd-01', name:'Sinigang Pack (Gulay + Sampalok Mix)', cat:'bundle', price:199, old:260, unit:'pack', sold:1680, rating:4.9, stock:40, emoji:'🧺', bg:5, origin:'Binangonan, Rizal', seller:'Fresh Catch Main', flash:true, isNew:false, desc:'Kasama: kangkong, sitaw, labanos, talong, kamatis, gabi, siling haba, at 1 sachet sinigang mix. Sapat sa 4–5 tao.' },
+  { id:'bnd-02', name:'Nilaga Pack (Gulay Set)', cat:'bundle', price:189, old:240, unit:'pack', sold:940, rating:4.8, stock:35, emoji:'🧺', bg:6, origin:'Binangonan, Rizal', seller:'Fresh Catch Main', flash:true, isNew:false, desc:'Kasama: patatas, repolyo, sayote, pechay, sibuyas, at saging na saba. Hugasan na at nakahiwa.' },
+  { id:'bnd-03', name:'Pinakbet Pack', cat:'bundle', price:179, old:220, unit:'pack', sold:820, rating:4.8, stock:31, emoji:'🧺', bg:7, origin:'Binangonan, Rizal', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Kasama: talong, ampalaya, okra, kalabasa, sitaw, kamatis, at bagoong sachet.' },
+  { id:'bnd-04', name:'Fish Combo Pack (1kg Bangus + 1kg Tilapia)', cat:'bundle', price:310, old:360, unit:'pack', sold:760, rating:4.9, stock:26, emoji:'🧺', bg:8, origin:'Laguna Lake, Binangonan', seller:'Aling Nena Fish Stall', flash:true, isNew:false, desc:'Linis na at nakabalot bawat isda. Naka-ice pack hanggang dating.' },
+  { id:'bnd-05', name:'Weekly Family Basket (Isda + Gulay)', cat:'bundle', price:999, old:1250, unit:'basket', sold:410, rating:4.9, stock:15, emoji:'🧺', bg:1, origin:'Binangonan, Rizal', seller:'Fresh Catch Main', flash:false, isNew:true, desc:'Isang linggong supply: 3kg assorted na isda, 5kg assorted na gulay, at rekado pack. Libreng delivery kahit saang barangay.' },
+  { id:'bnd-06', name:'Ginataan Pack', cat:'bundle', price:169, old:0, unit:'pack', sold:290, rating:4.7, stock:22, emoji:'🧺', bg:2, origin:'Binangonan, Rizal', seller:'Fresh Catch Main', flash:false, isNew:true, desc:'Kasama: kalabasa, sitaw, dahon ng sili, siling haba, at 1 pack gata.' },
+  { id:'bnd-07', name:'Karinderya Bulk Pack (10kg Gulay)', cat:'bundle', price:1450, old:1700, unit:'pack', sold:180, rating:4.8, stock:10, emoji:'🧺', bg:3, origin:'Binangonan, Rizal', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Para sa karinderya at catering. Assorted na gulay, may libreng delivery at flexible na schedule.' },
+
+  /* ---------- DRIED & PRESERVED ---------- */
+  { id:'dry-01', name:'Tuyo (Dried Herring)', cat:'dried', price:260, old:300, unit:'kg', sold:640, rating:4.5, stock:30, emoji:'🐠', bg:4, origin:'Quezon', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Klasikong almusal. Malutong at hindi masyadong maalat.' },
+  { id:'dry-02', name:'Daing na Bangus — Boneless', cat:'dried', price:240, old:280, unit:'kg', sold:830, rating:4.7, stock:27, emoji:'🐠', bg:5, origin:'Laguna Lake, Binangonan', seller:'Aling Nena Fish Stall', flash:true, isNew:false, desc:'Marinated at boneless. Prito lang at kain na.' },
+  { id:'dry-03', name:'Dilis (Dried Anchovies)', cat:'dried', price:320, old:0, unit:'kg', sold:390, rating:4.6, stock:19, emoji:'🐠', bg:6, origin:'Zambales', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Crispy na dilis. Pang-almusal at pang-pulutan.' },
+  { id:'dry-04', name:'Bagoong Alamang', cat:'dried', price:180, old:0, unit:'kg', sold:470, rating:4.6, stock:23, emoji:'🫙', bg:7, origin:'Bataan', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Sauteed bagoong. Pang-pinakbet, kare-kare, at green mango.' },
+  { id:'dry-05', name:'Tinapa (Smoked Fish)', cat:'dried', price:220, old:260, unit:'kg', sold:560, rating:4.5, stock:25, emoji:'🐠', bg:8, origin:'Rosario, Cavite', seller:'Fresh Catch Main', flash:false, isNew:false, desc:'Usok-usok pa ang amoy. Tinapa flakes at silog meals.' }
+];
+
+/* Delivery coverage — Binangonan, Rizal barangays with delivery fee (PHP) */
+const FCGS_BARANGAYS = [
+  { name:'Calumpang',       fee:39, eta:'30–45 min' },
+  { name:'Layunan',         fee:39, eta:'30–45 min' },
+  { name:'Libid',           fee:39, eta:'30–45 min' },
+  { name:'Tagpos',          fee:39, eta:'30–45 min' },
+  { name:'Tatala',          fee:49, eta:'40–60 min' },
+  { name:'Bilibiran',       fee:49, eta:'40–60 min' },
+  { name:'Binitagan',       fee:49, eta:'40–60 min' },
+  { name:'Bombong',         fee:49, eta:'40–60 min' },
+  { name:'Buhangin',        fee:49, eta:'40–60 min' },
+  { name:'Batingan',        fee:49, eta:'40–60 min' },
+  { name:'Bangad',          fee:59, eta:'45–70 min' },
+  { name:'Darangan',        fee:59, eta:'45–70 min' },
+  { name:'Ginoong Sanay',   fee:59, eta:'45–70 min' },
+  { name:'Gulod',           fee:59, eta:'45–70 min' },
+  { name:'Habagatan',       fee:59, eta:'45–70 min' },
+  { name:'Ithan',           fee:59, eta:'45–70 min' },
+  { name:'Janosa',          fee:59, eta:'45–70 min' },
+  { name:'Kalawaan',        fee:59, eta:'45–70 min' },
+  { name:'Kalinawan',       fee:69, eta:'60–90 min' },
+  { name:'Kasile',          fee:69, eta:'60–90 min' },
+  { name:'Kaytome',         fee:69, eta:'60–90 min' },
+  { name:'Kinaboogan',      fee:69, eta:'60–90 min' },
+  { name:'Kinagatan',       fee:69, eta:'60–90 min' },
+  { name:'Limbon-limbon',   fee:69, eta:'60–90 min' },
+  { name:'Lunsad',          fee:69, eta:'60–90 min' },
+  { name:'Macamot',         fee:69, eta:'60–90 min' },
+  { name:'Mahabang Parang', fee:69, eta:'60–90 min' },
+  { name:'Malakaban',       fee:79, eta:'90+ min (bangka)' },
+  { name:'Mambog',          fee:69, eta:'60–90 min' },
+  { name:'Pag-asa',         fee:59, eta:'45–70 min' },
+  { name:'Palangoy',        fee:59, eta:'45–70 min' },
+  { name:'Pantok',          fee:59, eta:'45–70 min' },
+  { name:'Pila Pila',       fee:49, eta:'40–60 min' },
+  { name:'Pinagdilawan',    fee:69, eta:'60–90 min' },
+  { name:'Pipindan',        fee:69, eta:'60–90 min' },
+  { name:'Rayap',           fee:69, eta:'60–90 min' },
+  { name:'San Carlos',      fee:59, eta:'45–70 min' },
+  { name:'Sapang',          fee:69, eta:'60–90 min' },
+  { name:'Tabon',           fee:59, eta:'45–70 min' },
+  { name:'Tayuman',         fee:59, eta:'45–70 min' }
+];
+
+/* Delivery time slots */
+const FCGS_SLOTS = [
+  { id:'s1', label:'6:00 AM – 9:00 AM',  note:'Bagong dating na huli' },
+  { id:'s2', label:'9:00 AM – 12:00 NN', note:'Pinaka-mabilis' },
+  { id:'s3', label:'1:00 PM – 4:00 PM',  note:'Hapon delivery' },
+  { id:'s4', label:'4:00 PM – 7:00 PM',  note:'Bago maghapunan' }
+];
+
+/* Payment options */
+const FCGS_PAYMENTS = [
+  { id:'cod',   label:'Cash on Delivery', icon:'💵', note:'Bayad kapag natanggap na ang order' },
+  { id:'gcash', label:'GCash',            icon:'📱', note:'Send to 0917 000 0000 — Fresh Catch Hub' },
+  { id:'maya',  label:'Maya',             icon:'📲', note:'Send to 0918 000 0000 — Fresh Catch Hub' },
+  { id:'bank',  label:'Bank Transfer',    icon:'🏦', note:'BPI / BDO — para sa bulk at karinderya orders' }
+];
+
+/* Free delivery threshold (PHP) */
+const FCGS_FREE_DELIVERY_MIN = 500;
+
+/* Voucher codes */
+const FCGS_VOUCHERS = {
+  SARIWA50:    { type:'fixed',    value:50, min:400, label:'₱50 OFF sa ₱400 na order' },
+  PALENGKE10:  { type:'percent',  value:10, min:600, max:150, label:'10% OFF sa ₱600 na order (max ₱150)' },
+  LIBREPADALA: { type:'shipping', value:0,  min:300, label:'Libreng delivery sa ₱300 na order' }
+};
+
+
+/* ============================================================
+   Product artwork — inline SVG illustrations
+   One drawing per product so every item has its own picture,
+   with no external image files to load.
+   ============================================================ */
+
+const ART_SHADOW = '<ellipse cx="50" cy="88" rx="27" ry="4" fill="rgba(0,0,0,.07)"/>';
+
+function svgWrap(inner) {
+  return '<svg class="art" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+    ART_SHADOW + inner + '</svg>';
+}
+
+const ART_KIND = {
+  /* ---- fish & seafood ---- */
+  fish(o) {
+    const dim = { slim: [35, 11], oval: [32, 16], round: [28, 20], small: [23, 13] }[o.s || 'oval'];
+    const rx = dim[0], ry = dim[1], tail = 52 - rx;
+    return `
+      <path d="M${tail} 50 L${tail - 15} ${50 - ry - 5} Q${tail - 8} 50 ${tail - 15} ${50 + ry + 5} Z" fill="${o.d}"/>
+      <polygon points="44,${50 - ry + 3} 56,${50 - ry - 11} 68,${50 - ry + 4}" fill="${o.d}" opacity=".9"/>
+      <polygon points="46,${50 + ry - 3} 54,${50 + ry + 8} 62,${50 + ry - 3}" fill="${o.d}" opacity=".6"/>
+      <ellipse cx="52" cy="50" rx="${rx}" ry="${ry}" fill="${o.b}"/>
+      <ellipse cx="55" cy="${50 + ry * 0.35}" rx="${rx * 0.72}" ry="${ry * 0.45}" fill="#fff" opacity=".3"/>
+      ${o.stripe ? `<path d="M${tail + 6} 50 h${2 * rx - 14}" stroke="${o.stripe}" stroke-width="3.4" opacity=".5"/>` : ''}
+      ${o.spots ? `<circle cx="44" cy="${50 - ry * 0.4}" r="2.2" fill="${o.d}" opacity=".5"/><circle cx="58" cy="${50 + ry * 0.3}" r="1.8" fill="${o.d}" opacity=".45"/>` : ''}
+      <path d="M${52 + rx * 0.3} ${50 - ry * 0.8} q-6 ${ry * 0.8} 0 ${ry * 1.6}" stroke="${o.d}" stroke-width="2" fill="none" opacity=".55"/>
+      <path d="M52 ${50 + ry * 0.25} q9 7 -1 10 q-7 -4 -7 -9 z" fill="${o.d}" opacity=".75"/>
+      ${o.whisker ? `<path d="M${52 + rx - 3} 53 q10 3 13 12 M${52 + rx - 4} 55 q7 8 6 15" stroke="${o.d}" stroke-width="1.6" fill="none" opacity=".8"/>` : ''}
+      <circle cx="${52 + rx * 0.6}" cy="${50 - ry * 0.32}" r="3.6" fill="#fff"/>
+      <circle cx="${52 + rx * 0.62}" cy="${50 - ry * 0.32}" r="1.9" fill="#243139"/>`;
+  },
+  shrimp(o) {
+    return `
+      <path d="M70 28 C42 24 24 42 28 58 C31 72 46 78 58 71" fill="none" stroke="${o.b}" stroke-width="15" stroke-linecap="round"/>
+      <path d="M62 30 q-22 2 -30 18" fill="none" stroke="${o.d}" stroke-width="2.4" opacity=".55"/>
+      <path d="M30 62 q10 10 22 8" fill="none" stroke="${o.d}" stroke-width="2.4" opacity=".55"/>
+      <path d="M58 71 l14 8 l-4 -12 l12 4 l-10 -12 z" fill="${o.d}"/>
+      <path d="M70 28 q10 -8 18 -6 M70 30 q12 -2 17 4" stroke="${o.d}" stroke-width="1.6" fill="none"/>
+      <path d="M36 66 l-6 8 M44 70 l-4 9 M52 72 l0 9" stroke="${o.d}" stroke-width="1.8" opacity=".7"/>
+      <circle cx="68" cy="33" r="2.6" fill="#243139"/>`;
+  },
+  crab(o) {
+    return `
+      <path d="M22 44 l-10 -10 M78 44 l10 -10" stroke="${o.d}" stroke-width="3"/>
+      <path d="M12 34 q-8 -4 -4 -10 q6 -2 8 4 q4 -4 6 2 q-2 6 -10 4 z" fill="${o.d}"/>
+      <path d="M88 34 q8 -4 4 -10 q-6 -2 -8 4 q-4 -4 -6 2 q2 6 10 4 z" fill="${o.d}"/>
+      <path d="M26 62 l-12 8 M28 68 l-10 12 M72 62 l12 8 M70 68 l10 12" stroke="${o.d}" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="50" cy="54" rx="27" ry="19" fill="${o.b}"/>
+      <ellipse cx="50" cy="50" rx="20" ry="11" fill="#fff" opacity=".22"/>
+      <circle cx="42" cy="44" r="3" fill="#fff"/><circle cx="42" cy="44" r="1.6" fill="#243139"/>
+      <circle cx="58" cy="44" r="3" fill="#fff"/><circle cx="58" cy="44" r="1.6" fill="#243139"/>
+      <path d="M40 62 q10 6 20 0" stroke="${o.d}" stroke-width="2" fill="none" opacity=".6"/>`;
+  },
+  mussel(o) {
+    return `
+      <path d="M26 70 Q22 34 52 26 Q76 34 70 62 Q50 76 26 70 Z" fill="${o.b}"/>
+      <path d="M30 68 Q30 40 54 30 Q68 38 64 60 Q48 70 30 68 Z" fill="${o.d}" opacity=".45"/>
+      <path d="M28 69 Q40 50 62 32" stroke="#fff" stroke-width="2" fill="none" opacity=".4"/>
+      <path d="M34 72 Q46 60 64 48" stroke="${o.d}" stroke-width="1.6" fill="none" opacity=".5"/>`;
+  },
+  squid(o) {
+    return `
+      <path d="M50 16 L64 50 Q50 60 36 50 Z" fill="${o.b}"/>
+      <path d="M50 16 L58 34 Q50 40 42 34 Z" fill="#fff" opacity=".25"/>
+      <path d="M36 34 l-10 6 l10 8 z M64 34 l10 6 l-10 8 z" fill="${o.d}" opacity=".8"/>
+      <ellipse cx="50" cy="56" rx="13" ry="7" fill="${o.d}"/>
+      <path d="M42 62 q-6 12 -10 18 M47 63 q-3 13 -5 20 M53 63 q3 13 5 20 M58 62 q6 12 10 18"
+            stroke="${o.b}" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+      <circle cx="45" cy="55" r="2.4" fill="#243139"/><circle cx="55" cy="55" r="2.4" fill="#243139"/>`;
+  },
+  oyster(o) {
+    return `
+      <path d="M20 62 Q26 34 52 30 Q80 34 80 60 Q52 74 20 62 Z" fill="${o.d}"/>
+      <path d="M26 60 Q32 40 52 37 Q72 40 73 58 Q52 68 26 60 Z" fill="${o.b}"/>
+      <ellipse cx="50" cy="54" rx="14" ry="8" fill="#f3e2cf"/>
+      <path d="M22 60 Q40 48 60 40 M26 66 Q44 54 66 46" stroke="#fff" stroke-width="1.6" fill="none" opacity=".45"/>`;
+  },
+  snail(o) {
+    return `
+      <path d="M28 72 q-8 0 -8 -6 q0 -6 10 -6 h20" stroke="${o.d}" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <circle cx="56" cy="52" r="22" fill="${o.b}"/>
+      <path d="M56 36 a16 16 0 1 1 -11 27 a11 11 0 1 1 15 -16 a6 6 0 1 1 -8 8"
+            fill="none" stroke="${o.d}" stroke-width="3.4"/>
+      <circle cx="26" cy="62" r="2" fill="#243139"/>`;
+  },
+  fillet(o) {
+    return `
+      <path d="M16 58 Q24 30 54 28 Q80 28 84 48 Q84 70 52 74 Q24 74 16 58 Z" fill="${o.b}"/>
+      <path d="M16 58 Q24 32 54 30 Q66 30 72 34 Q46 38 34 52 Q24 60 16 58 Z" fill="#fff" opacity=".28"/>
+      <path d="M26 50 Q50 36 78 38 M26 58 Q50 44 82 46 M30 66 Q52 54 82 55"
+            stroke="${o.d}" stroke-width="2.4" fill="none" opacity=".65"/>
+      <path d="M79 30 Q89 50 80 72" stroke="${o.d}" stroke-width="7" fill="none" opacity=".95" stroke-linecap="round"/>
+      <path d="M79 32 Q88 50 80 70" stroke="#fff" stroke-width="1.8" fill="none" opacity=".35"/>`;
+  },
+  driedfish(o) {
+    return `
+      <path d="M24 50 L10 38 Q15 50 10 62 Z" fill="${o.d}"/>
+      <ellipse cx="52" cy="50" rx="30" ry="13" fill="${o.b}"/>
+      <path d="M34 44 q18 -8 40 -2 M32 52 q20 -6 44 -2 M36 58 q18 -4 38 0"
+            stroke="${o.d}" stroke-width="1.8" fill="none" opacity=".55"/>
+      <circle cx="74" cy="46" r="2.6" fill="#3a2c1e"/>`;
+  },
+  smallfish(o) {
+    const one = `<path d="M24 50 L12 40 Q16 50 12 60 Z" fill="${o.d}"/>
+                 <ellipse cx="50" cy="50" rx="26" ry="11" fill="${o.b}"/>
+                 <circle cx="68" cy="47" r="2.4" fill="#243139"/>`;
+    return `<g transform="translate(-4,-14) scale(.62)">${one}</g>
+            <g transform="translate(26,6) scale(.62)">${one}</g>
+            <g transform="translate(0,26) scale(.62)">${one}</g>`;
+  },
+
+  /* ---- vegetables, herbs, bundles ---- */
+  leafy(o) {
+    const leaf = (rot, sc) =>
+      `<g transform="translate(50 78) rotate(${rot}) scale(${sc})">
+         <path d="M0 0 Q-22 -14 -14 -34 Q-7 -46 0 -46 Q7 -46 14 -34 Q22 -14 0 0 Z" fill="${o.l}"/>
+         <path d="M0 -2 L0 -40" stroke="${o.s}" stroke-width="3"/>
+         <path d="M0 -14 l-8 -6 M0 -22 l8 -6 M0 -30 l-7 -5" stroke="${o.s}" stroke-width="1.6" opacity=".7"/>
+       </g>`;
+    return `${leaf(-52, .8)}${leaf(52, .8)}${leaf(-26, 1)}${leaf(26, 1)}${leaf(0, 1.1)}
+            <path d="M42 80 q8 6 16 0 q-8 6 -16 0 z" fill="${o.s}"/>`;
+  },
+  sprig(o) {
+    const dot = (x, y, r) => `<ellipse cx="${x}" cy="${y}" rx="${r}" ry="${r * .78}" fill="${o.l}"/>`;
+    return `
+      <path d="M50 84 Q48 54 50 24" stroke="${o.s}" stroke-width="3" fill="none"/>
+      <path d="M50 66 q-16 -4 -22 -12 M50 56 q16 -4 22 -12 M50 46 q-14 -4 -19 -12 M50 36 q14 -4 19 -12"
+            stroke="${o.s}" stroke-width="2" fill="none"/>
+      ${dot(28, 54, 6)}${dot(72, 44, 6)}${dot(31, 34, 5.4)}${dot(69, 24, 5.4)}
+      ${dot(50, 22, 5.6)}${dot(38, 46, 5)}${dot(62, 36, 5)}${dot(44, 62, 5)}${dot(58, 56, 5)}`;
+  },
+  cabbage(o) {
+    return `
+      <circle cx="50" cy="52" r="28" fill="${o.l}"/>
+      <path d="M24 46 Q50 30 76 46 Q50 40 24 46 Z" fill="#fff" opacity=".25"/>
+      <path d="M28 62 Q50 44 72 62 M32 70 Q50 54 68 70 M50 24 Q44 48 50 76 M50 24 Q56 48 50 76"
+            stroke="${o.s}" stroke-width="2.2" fill="none" opacity=".55"/>
+      <ellipse cx="50" cy="52" rx="12" ry="14" fill="#fff" opacity=".2"/>`;
+  },
+  stalks(o) {
+    return `
+      <path d="M36 82 Q30 46 40 18 M44 82 Q40 44 48 14 M52 82 Q52 44 56 16 M60 82 Q64 46 66 22"
+            stroke="${o.l}" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M32 78 h36" stroke="${o.s}" stroke-width="6" stroke-linecap="round"/>
+      <path d="M32 78 h36" stroke="#fff" stroke-width="1.6" opacity=".35"/>`;
+  },
+  carrot(o) {
+    return `
+      <path d="M50 22 q-10 -12 -18 -12 q4 10 12 14 M50 22 q2 -14 10 -16 q2 10 -4 16" fill="${o.g}"/>
+      <path d="M38 30 Q50 22 62 30 L54 80 Q50 88 46 80 Z" fill="${o.b}"/>
+      <path d="M42 40 h16 M43 50 h14 M45 60 h10" stroke="${o.d}" stroke-width="2" opacity=".45"/>
+      <path d="M41 32 Q50 26 59 32 Q50 34 41 32 Z" fill="#fff" opacity=".25"/>`;
+  },
+  tuber(o) {
+    return `
+      <path d="M22 52 Q24 30 48 28 Q76 26 78 48 Q80 72 52 74 Q26 74 22 52 Z" fill="${o.b}"/>
+      <path d="M28 44 Q40 32 58 34" stroke="#fff" stroke-width="4" fill="none" opacity=".3"/>
+      <circle cx="40" cy="52" r="2.2" fill="${o.d}" opacity=".55"/>
+      <circle cx="58" cy="44" r="2" fill="${o.d}" opacity=".5"/>
+      <circle cx="62" cy="62" r="2.4" fill="${o.d}" opacity=".5"/>
+      <circle cx="46" cy="66" r="1.8" fill="${o.d}" opacity=".45"/>`;
+  },
+  bulb(o) {
+    return `
+      <path d="M50 24 q-4 -8 2 -12 q2 6 4 12" fill="${o.g || '#7fae54'}"/>
+      <path d="M50 26 Q78 34 74 56 Q70 78 50 78 Q30 78 26 56 Q22 34 50 26 Z" fill="${o.b}"/>
+      <path d="M50 26 Q60 48 50 78 M50 26 Q40 48 50 78 M50 26 Q70 46 64 72 M50 26 Q30 46 36 72"
+            stroke="${o.d}" stroke-width="1.8" fill="none" opacity=".5"/>
+      <path d="M44 78 q6 8 12 0" stroke="${o.d}" stroke-width="1.6" fill="none" opacity=".6"/>`;
+  },
+  ginger(o) {
+    return `
+      <path d="M26 58 Q22 44 34 40 Q44 36 50 44 Q58 34 68 40 Q80 46 74 58 Q68 70 54 68 Q38 72 26 58 Z" fill="${o.b}"/>
+      <path d="M40 44 q6 12 4 22 M60 42 q-4 12 -2 22" stroke="${o.d}" stroke-width="2" fill="none" opacity=".5"/>
+      <path d="M30 50 Q44 44 52 50" stroke="#fff" stroke-width="3" fill="none" opacity=".3"/>
+      <path d="M72 40 q8 -6 12 -2 q-4 8 -12 6 z" fill="${o.b}"/>`;
+  },
+  round(o) {
+    return `
+      <circle cx="50" cy="54" r="26" fill="${o.b}"/>
+      <path d="M32 40 Q40 32 50 32" stroke="#fff" stroke-width="5" fill="none" opacity=".35" stroke-linecap="round"/>
+      ${o.calyx ? `<path d="M50 30 l-12 -6 l6 8 l-12 0 l10 6 M50 30 l12 -6 l-6 8 l12 0 l-10 6" stroke="${o.g}" stroke-width="3" fill="none" stroke-linejoin="round"/>` : ''}
+      <path d="M50 28 q2 -8 8 -10" stroke="${o.g}" stroke-width="3" fill="none"/>
+      ${o.leaf ? `<path d="M58 20 q12 -6 16 2 q-10 8 -16 -2 z" fill="${o.g}"/>` : ''}`;
+  },
+  eggplant(o) {
+    return `
+      <path d="M56 30 Q78 38 76 56 Q74 78 52 78 Q30 78 28 58 Q26 40 44 32 Z" fill="${o.b}"/>
+      <path d="M40 44 Q46 36 58 34" stroke="#fff" stroke-width="4.4" fill="none" opacity=".28" stroke-linecap="round"/>
+      <path d="M44 32 q-8 -8 -2 -12 q10 -4 18 2 q6 6 -4 8 z" fill="${o.g}"/>
+      <path d="M52 22 q2 -8 8 -10" stroke="${o.g}" stroke-width="3" fill="none"/>`;
+  },
+  longbean(o) {
+    return `
+      <path d="M30 20 Q22 50 34 82 M42 18 Q36 50 46 84 M54 20 Q52 50 58 82"
+            stroke="${o.b}" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M30 20 Q22 50 34 82" stroke="#fff" stroke-width="1.8" fill="none" opacity=".35"/>
+      <path d="M66 24 Q64 52 70 78" stroke="${o.d}" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M28 18 q6 -6 14 -2 q10 -4 16 2 q8 -2 10 4" stroke="${o.g || o.d}" stroke-width="3" fill="none"/>`;
+  },
+  squash(o) {
+    return `
+      <ellipse cx="50" cy="56" rx="28" ry="24" fill="${o.b}"/>
+      <path d="M50 32 Q38 56 50 80 M50 32 Q62 56 50 80 M32 40 Q30 56 34 74 M68 40 Q70 56 66 74"
+            stroke="${o.d}" stroke-width="2.2" fill="none" opacity=".55"/>
+      <path d="M30 44 Q38 34 50 33" stroke="#fff" stroke-width="4" fill="none" opacity=".3"/>
+      <path d="M50 32 q-2 -12 6 -14 q4 6 -2 14 z" fill="${o.g}"/>`;
+  },
+  gourd(o) {
+    const w = o.w || 13;
+    return `
+      <path d="M50 20 q${w} 4 ${w} 20 q0 30 0 30 q0 12 -${w} 12 q-${w} 0 -${w} -12 q0 0 0 -30 q0 -16 ${w} -20 z" fill="${o.b}"/>
+      <path d="M${50 - w + 3} 36 q0 22 0 34" stroke="#fff" stroke-width="3.4" fill="none" opacity=".3"/>
+      ${o.bumpy ? `
+        <path d="M${50 - w} 32 q8 6 0 12 q8 6 0 12 q8 6 0 12 q8 6 0 10" stroke="${o.d}" stroke-width="2.6" fill="none" opacity=".8"/>
+        <path d="M${50 + w} 32 q-8 6 0 12 q-8 6 0 12 q-8 6 0 12 q-8 6 0 10" stroke="${o.d}" stroke-width="2.6" fill="none" opacity=".8"/>
+        <ellipse cx="46" cy="36" rx="3.4" ry="2.4" fill="${o.d}" opacity=".55"/>
+        <ellipse cx="55" cy="46" rx="3.4" ry="2.4" fill="${o.d}" opacity=".55"/>
+        <ellipse cx="45" cy="56" rx="3.4" ry="2.4" fill="${o.d}" opacity=".55"/>
+        <ellipse cx="55" cy="66" rx="3.4" ry="2.4" fill="${o.d}" opacity=".55"/>` : ''}
+      ${o.ridged ? `<path d="M50 26 v52 M44 28 v48 M56 28 v48" stroke="${o.d}" stroke-width="1.8" opacity=".45"/>` : ''}
+      <path d="M50 20 q1 -8 7 -10" stroke="${o.g}" stroke-width="3" fill="none"/>`;
+  },
+  okra(o) {
+    const pod = `<path d="M44 22 q6 -4 12 0 l4 40 q-10 12 -20 0 z" fill="${o.b}"/>
+                 <path d="M50 24 v52 M45 26 l3 46 M55 26 l-3 46" stroke="${o.d}" stroke-width="1.8" opacity=".5"/>
+                 <path d="M44 22 q-4 -8 6 -8 q10 0 6 8 z" fill="${o.g}"/>`;
+    return `<g transform="rotate(-12 50 50)">${pod}</g>
+            <g transform="translate(16 8) rotate(20 50 50) scale(.8)">${pod}</g>`;
+  },
+  chili(o) {
+    const pod = (x, y, rot, sc) =>
+      `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${sc})">
+         <path d="M0 0 q10 6 10 22 q0 16 -6 20 q-8 -6 -8 -22 q0 -14 4 -20 z" fill="${o.b}"/>
+         <path d="M0 0 q-2 -8 4 -10 q6 4 2 10 z" fill="${o.g}"/>
+       </g>`;
+    return o.cluster
+      ? `${pod(36, 24, -18, .9)}${pod(58, 22, 14, .95)}${pod(47, 40, 0, .85)}`
+      : `${pod(44, 18, -8, 1.25)}${pod(64, 28, 22, .9)}`;
+  },
+  basket(o) {
+    return `
+      <path d="M50 34 q-14 -14 -28 -8 q6 14 26 12 z" fill="${o.a}"/>
+      <circle cx="62" cy="30" r="10" fill="${o.b2}"/>
+      <path d="M62 20 q2 -6 8 -6" stroke="#5c9a3f" stroke-width="2.6" fill="none"/>
+      <path d="M30 44 L70 44 L64 76 Q50 82 36 76 Z" fill="${o.b}"/>
+      <path d="M30 44 h40" stroke="${o.d}" stroke-width="5" stroke-linecap="round"/>
+      <path d="M36 54 h29 M35 62 h31" stroke="${o.d}" stroke-width="2.4" opacity=".55"/>
+      <path d="M40 44 l-2 32 M50 44 v34 M60 44 l2 32" stroke="${o.d}" stroke-width="2" opacity=".4"/>`;
+  },
+  jar(o) {
+    return `
+      <rect x="34" y="24" width="32" height="9" rx="3" fill="${o.d}"/>
+      <path d="M36 33 h28 q6 0 6 8 v28 q0 8 -8 8 h-24 q-8 0 -8 -8 v-28 q0 -8 6 -8 z" fill="${o.b}"/>
+      <rect x="36" y="46" width="28" height="16" rx="2" fill="#fff" opacity=".85"/>
+      <path d="M40 52 h20 M40 57 h14" stroke="${o.d}" stroke-width="2" opacity=".7"/>
+      <path d="M38 38 q0 26 0 30" stroke="#fff" stroke-width="3" opacity=".35" fill="none"/>`;
+  }
+};
+
+/* per-product artwork palette */
+const ART = {
+  'fsh-01': { k:'fish', b:'#d5dee4', d:'#8fa4b0', s:'oval' },
+  'fsh-02': { k:'fish', b:'#b9c2ac', d:'#7c8a6d', s:'round' },
+  'fsh-03': { k:'fish', b:'#c2d3dd', d:'#6f93a8', s:'slim', stripe:'#8fb4c8' },
+  'fsh-04': { k:'fillet', b:'#e0897c', d:'#b35f52' },
+  'fsh-05': { k:'fish', b:'#9aa3a6', d:'#5f696d', s:'slim', whisker:true },
+  'fsh-06': { k:'fish', b:'#8d9a7e', d:'#5c6a4d', s:'slim', spots:true },
+  'fsh-07': { k:'fish', b:'#dfe6ea', d:'#9aacb6', s:'small' },
+  'fsh-08': { k:'fish', b:'#eec3bd', d:'#c08b84', s:'oval' },
+  'fsh-09': { k:'fillet', b:'#f2a07f', d:'#d1704f' },
+  'fsh-10': { k:'fish', b:'#e0736a', d:'#b04a43', s:'oval' },
+  'fsh-11': { k:'fish', b:'#b8cfdc', d:'#6d90a4', s:'small', stripe:'#83a8bd' },
+  'fsh-12': { k:'fish', b:'#dde5e9', d:'#94a7b2', s:'round' },
+
+  'sea-01': { k:'shrimp', b:'#f0a48c', d:'#c9705a' },
+  'sea-02': { k:'crab', b:'#d97a5c', d:'#a8543c' },
+  'sea-03': { k:'mussel', b:'#3f4a5c', d:'#242c3a' },
+  'sea-04': { k:'squid', b:'#f0dcd6', d:'#c49a90' },
+  'sea-05': { k:'oyster', b:'#cfc6b6', d:'#9d9384' },
+  'sea-06': { k:'snail', b:'#9c8467', d:'#6d5a44' },
+  'sea-07': { k:'fillet', b:'#e6d3c6', d:'#b89b89' },
+
+  'lfy-01': { k:'leafy', l:'#4f9e3f', s:'#e6efd6' },
+  'lfy-02': { k:'stalks', l:'#3f9440', s:'#9c6b3f' },
+  'lfy-03': { k:'cabbage', l:'#9dc76a', s:'#6d9c47' },
+  'lfy-04': { k:'leafy', l:'#5aa544', s:'#cfe0b4' },
+  'lfy-05': { k:'sprig', l:'#5aa84a', s:'#4a7c3c' },
+  'lfy-06': { k:'leafy', l:'#3f8c46', s:'#b0574f' },
+  'lfy-07': { k:'cabbage', l:'#8fc55f', s:'#5f9a3c' },
+  'lfy-08': { k:'sprig', l:'#48913f', s:'#3d6f34' },
+
+  'rot-01': { k:'carrot', b:'#e8843a', d:'#c2662a', g:'#57993f' },
+  'rot-02': { k:'tuber', b:'#d8b47c', d:'#a9854f' },
+  'rot-03': { k:'tuber', b:'#c2726b', d:'#8f4a45' },
+  'rot-04': { k:'bulb', b:'#a8547d', d:'#7e3c5c' },
+  'rot-05': { k:'bulb', b:'#eee6da', d:'#c2b6a4' },
+  'rot-06': { k:'ginger', b:'#e0c493', d:'#b2946a' },
+  'rot-07': { k:'tuber', b:'#a08464', d:'#6f5a42' },
+  'rot-08': { k:'tuber', b:'#efe6d2', d:'#c6b89c' },
+
+  'frv-01': { k:'round', b:'#e2483c', g:'#4f9e3f', calyx:true },
+  'frv-02': { k:'eggplant', b:'#7c4a9c', g:'#4f9e3f' },
+  'frv-03': { k:'gourd', b:'#7fae3f', d:'#5c8a2c', g:'#57993f', bumpy:true, w:14 },
+  'frv-04': { k:'longbean', b:'#5aa544', d:'#48903a', g:'#3f7c34' },
+  'frv-05': { k:'squash', b:'#e08a34', d:'#b8672a', g:'#57993f' },
+  'frv-06': { k:'okra', b:'#6fa93c', d:'#4f8a2c', g:'#4a7c34' },
+  'frv-07': { k:'gourd', b:'#bcd48c', d:'#93b060', g:'#57993f', ridged:true, w:15 },
+  'frv-08': { k:'gourd', b:'#4f9440', d:'#3a7431', g:'#57993f', w:12 },
+  'frv-09': { k:'gourd', b:'#c2d8a0', d:'#9cb87a', g:'#57993f', w:13 },
+  'frv-10': { k:'cabbage', l:'#a8cf7c', s:'#7cab52' },
+  'frv-11': { k:'longbean', b:'#7fb84f', d:'#5f9c3c', g:'#4a8a34' },
+
+  'hrb-01': { k:'chili', b:'#df3b32', g:'#57993f', cluster:true },
+  'hrb-02': { k:'chili', b:'#5aa544', g:'#3f7c34' },
+  'hrb-03': { k:'stalks', l:'#4f9e3f', s:'#eef4e2' },
+  'hrb-04': { k:'sprig', l:'#57a844', s:'#468a3c' },
+  'hrb-05': { k:'stalks', l:'#9cbf6f', s:'#d8dfb4' },
+  'hrb-06': { k:'round', b:'#8cbf3f', g:'#4f8a34', leaf:true },
+
+  'bnd-01': { k:'basket', b:'#d8a761', d:'#a87c3f', a:'#4f9e3f', b2:'#e2483c' },
+  'bnd-02': { k:'basket', b:'#d8a761', d:'#a87c3f', a:'#8fc55f', b2:'#d8b47c' },
+  'bnd-03': { k:'basket', b:'#d8a761', d:'#a87c3f', a:'#7fae3f', b2:'#7c4a9c' },
+  'bnd-04': { k:'basket', b:'#c6d4dc', d:'#8fa4b0', a:'#5aa544', b2:'#b9c2ac' },
+  'bnd-05': { k:'basket', b:'#c99a55', d:'#96702f', a:'#3f9440', b2:'#e08a34' },
+  'bnd-06': { k:'basket', b:'#d8a761', d:'#a87c3f', a:'#5aa544', b2:'#e0c493' },
+  'bnd-07': { k:'basket', b:'#b98f4f', d:'#8a6634', a:'#4f9e3f', b2:'#8cbf3f' },
+
+  'dry-01': { k:'driedfish', b:'#c9a06a', d:'#8f6f42' },
+  'dry-02': { k:'fillet', b:'#d8bc94', d:'#a8895f' },
+  'dry-03': { k:'smallfish', b:'#dcc9a0', d:'#a89468' },
+  'dry-04': { k:'jar', b:'#a85c4a', d:'#7c3f31' },
+  'dry-05': { k:'driedfish', b:'#d8a34f', d:'#a87731' }
+};
+
+function artSVG(p) {
+  const cfg = ART[p && p.id];
+  if (!cfg || !ART_KIND[cfg.k]) return svgWrap('<circle cx="50" cy="52" r="26" fill="#cfd8dd"/>');
+  return svgWrap(ART_KIND[cfg.k](cfg));
+}
+
+function artById(id) {
+  const p = FCGS_PRODUCTS.find(x => x.id === id);
+  return p ? artSVG(p) : '';
+}
+
+
+/* ============================================================
+   Fresh Catch and Green Supply Hub — storefront logic
+   Vanilla JS. Reads the catalog data defined above.
+   Persists cart + orders in localStorage.
+   ============================================================ */
+
+(function () {
+  'use strict';
+
+  /* ---------- state ---------- */
+  const LS_CART = 'fcgs_cart';
+  const LS_ORDERS = 'fcgs_orders';
+  const PAGE_SIZE = 15;
+
+  const state = {
+    view: 'home',
+    cat: 'all',
+    search: '',
+    sort: 'popular',
+    priceSort: '',
+    min: null,
+    max: null,
+    rate: 0,
+    inStock: false,
+    onSale: false,
+    limit: PAGE_SIZE,
+    cart: [],
+    orders: [],
+    voucher: null,
+    openProduct: null
+  };
+
+  /* ---------- helpers ---------- */
+  const $ = (sel, root) => (root || document).querySelector(sel);
+  const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+    );
+  }
+
+  function money(n) {
+    return '₱' + Number(n).toLocaleString('en-PH', { maximumFractionDigits: 2 });
+  }
+
+  function stars(rate) {
+    const full = Math.floor(rate);
+    const half = rate - full >= 0.5;
+    return '★'.repeat(full) + (half ? '½' : '');
+  }
+
+  function product(id) {
+    return FCGS_PRODUCTS.find(p => p.id === id);
+  }
+
+  function soldLabel(n) {
+    return n >= 1000 ? (n / 1000).toFixed(1).replace('.0', '') + 'k sold' : n + ' sold';
+  }
+
+  let toastTimer = null;
+  function toast(msg) {
+    const el = $('#toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+  }
+
+  /* ---------- storage ---------- */
+  function load() {
+    try {
+      const c = JSON.parse(localStorage.getItem(LS_CART) || '[]');
+      if (Array.isArray(c)) state.cart = c.filter(i => product(i.id) && i.qty > 0);
+    } catch (_) { state.cart = []; }
+    try {
+      const o = JSON.parse(localStorage.getItem(LS_ORDERS) || '[]');
+      if (Array.isArray(o)) state.orders = o;
+    } catch (_) { state.orders = []; }
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(LS_CART, JSON.stringify(state.cart));
+      localStorage.setItem(LS_ORDERS, JSON.stringify(state.orders));
+    } catch (_) { /* storage unavailable — session-only */ }
+  }
+
+  /* ---------- cart ops ---------- */
+  function cartCount() {
+    return state.cart.reduce((n, i) => n + i.qty, 0);
+  }
+
+  function subtotal() {
+    return state.cart.reduce((sum, i) => {
+      const p = product(i.id);
+      return p ? sum + p.price * i.qty : sum;
+    }, 0);
+  }
+
+  function discount() {
+    const v = state.voucher && FCGS_VOUCHERS[state.voucher];
+    if (!v) return 0;
+    const sub = subtotal();
+    if (sub < v.min) return 0;
+    if (v.type === 'fixed') return Math.min(v.value, sub);
+    if (v.type === 'percent') return Math.min(Math.round(sub * v.value / 100), v.max || Infinity);
+    return 0;
+  }
+
+  function shippingWaived(sub) {
+    const v = state.voucher && FCGS_VOUCHERS[state.voucher];
+    if (sub >= FCGS_FREE_DELIVERY_MIN) return true;
+    return !!(v && v.type === 'shipping' && sub >= v.min);
+  }
+
+  function addToCart(id, qty) {
+    const p = product(id);
+    if (!p) return;
+    if (p.stock <= 0) { toast('Ubos na po ang stock ng ' + p.name); return; }
+    const line = state.cart.find(i => i.id === id);
+    const want = (line ? line.qty : 0) + (qty || 1);
+    if (want > p.stock) {
+      toast('Hanggang ' + p.stock + ' ' + p.unit + ' lang ang available na stock.');
+      if (line) line.qty = p.stock; else state.cart.push({ id: id, qty: p.stock });
+    } else if (line) {
+      line.qty = want;
+    } else {
+      state.cart.push({ id: id, qty: qty || 1 });
+    }
+    save();
+    syncCartBadge();
+    toast('Nadagdag sa cart: ' + p.name);
+  }
+
+  function setQty(id, qty) {
+    const p = product(id);
+    const line = state.cart.find(i => i.id === id);
+    if (!p || !line) return;
+    line.qty = Math.max(1, Math.min(qty, p.stock));
+    save();
+    syncCartBadge();
+  }
+
+  function removeFromCart(id) {
+    state.cart = state.cart.filter(i => i.id !== id);
+    save();
+    syncCartBadge();
+  }
+
+  function syncCartBadge() {
+    const n = cartCount();
+    $('#cartCount').textContent = n;
+    const m = $('#mCartCount');
+    if (m) m.textContent = n;
+  }
+
+  /* ---------- navigation ---------- */
+  function nav(view, arg) {
+    state.view = view;
+    $$('.view').forEach(v => (v.hidden = true));
+
+    if (view === 'product') {
+      renderProduct(arg);
+      $('#view-product').hidden = false;
+    } else if (view === 'cart') {
+      renderCart();
+      $('#view-cart').hidden = false;
+    } else if (view === 'checkout') {
+      renderCheckout();
+      $('#view-checkout').hidden = false;
+    } else if (view === 'orders') {
+      renderOrders(arg);
+      $('#view-orders').hidden = false;
+    } else {
+      state.view = 'home';
+      $('#view-home').hidden = false;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goCatalog() {
+    if (state.view !== 'home') nav('home');
+    setTimeout(() => {
+      const el = $('#catalog');
+      if (el) window.scrollTo({ top: el.offsetTop - 90, behavior: 'smooth' });
+    }, 60);
+  }
+
+  /* ---------- home: hero slider ---------- */
+  function initSlider() {
+    const slides = $$('#heroSlider .slide');
+    const dots = $('#sliderDots');
+    let idx = 0;
+    slides.forEach((s, i) => {
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', 'Slide ' + (i + 1));
+      b.addEventListener('click', () => show(i));
+      dots.appendChild(b);
+    });
+    function show(i) {
+      idx = i % slides.length;
+      slides.forEach((s, n) => s.classList.toggle('active', n === idx));
+      $$('#sliderDots button').forEach((b, n) => b.classList.toggle('active', n === idx));
+    }
+    show(0);
+    setInterval(() => show(idx + 1), 5000);
+  }
+
+  /* ---------- home: flash-deal countdown ---------- */
+  function initCountdown() {
+    function tick() {
+      const now = new Date();
+      const end = new Date(now);
+      const nextBlock = Math.ceil((now.getHours() + 1) / 6) * 6;
+      end.setHours(nextBlock, 0, 0, 0);
+      const diff = Math.max(0, end - now);
+      const pad = v => String(v).padStart(2, '0');
+      $('#cdH').textContent = pad(Math.floor(diff / 3600000));
+      $('#cdM').textContent = pad(Math.floor((diff % 3600000) / 60000));
+      $('#cdS').textContent = pad(Math.floor((diff % 60000) / 1000));
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  /* ---------- home: categories ---------- */
+  function renderCategories() {
+    $('#catGrid').innerHTML = FCGS_CATEGORIES.map(c => `
+      <button class="cat-item" data-cat="${c.id}">
+        <span class="cat-emoji">${c.icon}</span>
+        <span class="cat-name">${esc(c.name)}</span>
+        <span class="cat-sub">${esc(c.sub)}</span>
+      </button>`).join('');
+
+    $('#filterCats').innerHTML =
+      `<button data-fcat="all" class="active">Lahat (${FCGS_PRODUCTS.length})</button>` +
+      FCGS_CATEGORIES.map(c => {
+        const n = FCGS_PRODUCTS.filter(p => p.cat === c.id).length;
+        return `<button data-fcat="${c.id}">${c.icon} ${esc(c.name)} (${n})</button>`;
+      }).join('');
+  }
+
+  /* ---------- coverage ---------- */
+  function renderCoverage() {
+    $('#covGrid').innerHTML = FCGS_BARANGAYS.map(b => `
+      <div class="cov-item">
+        <b>Brgy. ${esc(b.name)}</b>
+        <span>${money(b.fee)} · ${esc(b.eta)}</span>
+      </div>`).join('');
+  }
+
+  /* ---------- product card ---------- */
+  function cardHTML(p) {
+    const off = p.old > p.price ? Math.round((1 - p.price / p.old) * 100) : 0;
+    const out = p.stock <= 0;
+    return `
+      <article class="pcard${out ? ' out' : ''}" data-id="${p.id}">
+        <div class="pthumb bg${p.bg}">
+          ${artSVG(p)}
+          ${off ? `<span class="pbadge">-${off}%</span>` : ''}
+          ${p.isNew ? '<span class="pbadge-new">BAGO</span>' : ''}
+          ${p.flash && !out ? '<span class="pflash">⚡ FLASH DEAL</span>' : ''}
+          ${out ? '<span class="pout-tag">UBOS NA</span>' : ''}
+        </div>
+        <div class="pbody">
+          <div class="pname">${esc(p.name)}</div>
+          <div class="pprice">
+            <b>${money(p.price)}</b>
+            <span class="punit">/ ${esc(p.unit)}</span>
+            ${p.old > p.price ? `<s>${money(p.old)}</s>` : ''}
+          </div>
+          <div class="ploc">📍 ${esc(p.origin)}</div>
+          <div class="pmeta">
+            <span class="pstars">${stars(p.rating)} <span style="color:var(--ink-3)">${p.rating}</span></span>
+            <span>${soldLabel(p.sold)}</span>
+          </div>
+          <button class="padd" data-add="${p.id}" ${out ? 'disabled' : ''}>
+            ${out ? 'Ubos na' : '+ Add to Cart'}
+          </button>
+        </div>
+      </article>`;
+  }
+
+  /* ---------- flash row ---------- */
+  function renderFlash() {
+    $('#flashRow').innerHTML = FCGS_PRODUCTS.filter(p => p.flash).slice(0, 6).map(cardHTML).join('');
+  }
+
+  /* ---------- catalog ---------- */
+  function filtered() {
+    const q = state.search.trim().toLowerCase();
+    const list = FCGS_PRODUCTS.filter(p => {
+      if (state.cat !== 'all' && p.cat !== state.cat) return false;
+      if (q) {
+        const hay = (p.name + ' ' + p.desc + ' ' + p.origin + ' ' + p.seller).toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      if (state.min !== null && p.price < state.min) return false;
+      if (state.max !== null && p.price > state.max) return false;
+      if (state.rate && p.rating < state.rate) return false;
+      if (state.inStock && p.stock <= 0) return false;
+      if (state.onSale && !(p.old > p.price)) return false;
+      return true;
+    });
+
+    if (state.priceSort === 'asc') list.sort((a, b) => a.price - b.price);
+    else if (state.priceSort === 'desc') list.sort((a, b) => b.price - a.price);
+    else if (state.sort === 'sold') list.sort((a, b) => b.sold - a.sold);
+    else if (state.sort === 'latest') list.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+    else list.sort((a, b) => (b.rating * 1000 + b.sold / 100) - (a.rating * 1000 + a.sold / 100));
+
+    return list;
+  }
+
+  function renderCatalog() {
+    const list = filtered();
+    $('#prodGrid').innerHTML = list.slice(0, state.limit).map(cardHTML).join('');
+    $('#resultCount').textContent = list.length + ' produkto';
+    $('#emptyState').hidden = list.length !== 0;
+    const more = list.length - state.limit;
+    $('#loadMore').style.display = more > 0 ? '' : 'none';
+    $('#loadMore').textContent = 'Load More (' + more + ' pa)';
+  }
+
+  /* ---------- product detail ---------- */
+  function renderProduct(id) {
+    const p = product(id);
+    if (!p) { nav('home'); return; }
+    state.openProduct = p.id;
+
+    const off = p.old > p.price ? Math.round((1 - p.price / p.old) * 100) : 0;
+    const cat = FCGS_CATEGORIES.find(c => c.id === p.cat);
+    const related = FCGS_PRODUCTS.filter(r => r.cat === p.cat && r.id !== p.id).slice(0, 5);
+
+    $('#view-product').innerHTML = `
+      <div class="wrap">
+        <div class="crumbs">
+          <a data-nav="home">Home</a> › <a data-fcat-link="${p.cat}">${esc(cat ? cat.name : '')}</a> › ${esc(p.name)}
+        </div>
+
+        <div class="card" style="margin-top:6px">
+          <div class="pd">
+            <div class="pd-gallery">
+              <div class="pd-main bg${p.bg}">${artSVG(p)}</div>
+              <div class="pd-thumbs">
+                <div class="bg${p.bg} active">${artSVG(p)}</div>
+                <div class="bg${(p.bg % 8) + 1}"><span class="ticon">🧊</span></div>
+                <div class="bg${((p.bg + 1) % 8) + 1}"><span class="ticon">📦</span></div>
+                <div class="bg${((p.bg + 2) % 8) + 1}"><span class="ticon">🚚</span></div>
+              </div>
+            </div>
+
+            <div class="pd-info">
+              <h1>${esc(p.name)}</h1>
+              <div class="pd-rate">
+                <span><b>${p.rating}</b> <span class="pstars">${stars(p.rating)}</span></span>
+                <span>${soldLabel(p.sold)}</span>
+                <span>${p.stock > 0 ? p.stock + ' ' + esc(p.unit) + ' available' : 'Ubos na'}</span>
+              </div>
+
+              <div class="pd-price">
+                ${p.old > p.price ? `<s>${money(p.old)}</s>` : ''}
+                <span class="now">${money(p.price)}</span>
+                <span class="punit">/ ${esc(p.unit)}</span>
+                ${off ? `<span class="off">-${off}% OFF</span>` : ''}
+              </div>
+
+              <div class="pd-rows">
+                <div class="pd-row"><span>Pinagmulan</span><span>📍 ${esc(p.origin)}</span></div>
+                <div class="pd-row"><span>Delivery</span><span>Same-day sa Binangonan · ${money(FCGS_FREE_DELIVERY_MIN)} pataas = libreng padala</span></div>
+                <div class="pd-row">
+                  <span>Dami (${esc(p.unit)})</span>
+                  <span class="qty">
+                    <button data-step="-1">−</button>
+                    <input id="pdQty" type="number" value="1" min="1" max="${p.stock}" />
+                    <button data-step="1">+</button>
+                  </span>
+                  <span style="color:var(--ink-3)">${p.stock} ${esc(p.unit)} natitira</span>
+                </div>
+              </div>
+
+              <div class="pd-actions">
+                <button class="btn btn-outline btn-lg" data-buy="cart" ${p.stock <= 0 ? 'disabled' : ''}>🛒 Add to Cart</button>
+                <button class="btn btn-accent btn-lg" data-buy="now" ${p.stock <= 0 ? 'disabled' : ''}>Buy Now</button>
+              </div>
+
+              <div class="pd-note">
+                ❄️ Naka-ice pack at insulated na paghahatid. Kung hindi sariwa pagdating, palit o refund agad — Fresh Guarantee.
+              </div>
+            </div>
+          </div>
+
+          <div class="pd-seller">
+            <div class="seller-ava">🏪</div>
+            <div class="seller-meta">
+              <b>${esc(p.seller)}</b>
+              <span>Binangonan Public Market · Verified supplier · 98% positive</span>
+            </div>
+            <button class="btn btn-ghost btn-sm" style="margin-left:auto" data-fcat-link="${p.cat}">Tingnan ang kategorya</button>
+          </div>
+
+          <div class="pd-desc">
+            <h4>Product Description</h4>
+            <p>${esc(p.desc)}</p>
+            <table class="spec-table">
+              <tr><td>Kategorya</td><td>${esc(cat ? cat.name : '')}</td></tr>
+              <tr><td>Unit ng benta</td><td>Per ${esc(p.unit)}</td></tr>
+              <tr><td>Pinagmulan</td><td>${esc(p.origin)}</td></tr>
+              <tr><td>Supplier</td><td>${esc(p.seller)}</td></tr>
+              <tr><td>Handling</td><td>Hugasan / linisan bago i-pack · naka-chilled na transport</td></tr>
+              <tr><td>Storage</td><td>${p.cat === 'fish' || p.cat === 'seafood' || p.cat === 'dried' ? 'Itago sa freezer o chiller pagdating' : 'Itago sa malamig at tuyong lugar'}</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="card block">
+          <h3 class="block-title">Kapareho nito</h3>
+          <div class="prod-grid">${related.map(cardHTML).join('')}</div>
+        </div>
+      </div>`;
+  }
+
+  /* ---------- cart ---------- */
+  function renderCart() {
+    const sub = subtotal();
+    const disc = discount();
+    const v = state.voucher && FCGS_VOUCHERS[state.voucher];
+    const el = $('#view-cart');
+
+    if (state.cart.length === 0) {
+      el.innerHTML = `
+        <div class="wrap">
+          <div class="page-head"><h1>Shopping Cart</h1></div>
+          <div class="empty" style="margin-top:12px">
+            <span>🧺</span>
+            <p>Wala pang laman ang inyong cart.</p>
+            <button class="btn btn-primary" data-scroll="catalog">Mamili Na</button>
+          </div>
+        </div>`;
+      return;
+    }
+
+    const lines = state.cart.map(i => {
+      const p = product(i.id);
+      return `
+        <div class="cart-line" data-id="${p.id}">
+          <div class="cl-prod">
+            <div class="cl-thumb bg${p.bg}">${artSVG(p)}</div>
+            <div class="cl-name">${esc(p.name)}<small>${esc(p.seller)} · 📍 ${esc(p.origin)}</small></div>
+          </div>
+          <div class="cl-price">${money(p.price)} / ${esc(p.unit)}</div>
+          <div>
+            <span class="qty">
+              <button data-cstep="-1">−</button>
+              <input type="number" value="${i.qty}" min="1" max="${p.stock}" data-cqty="${p.id}" />
+              <button data-cstep="1">+</button>
+            </span>
+          </div>
+          <div class="cl-total">${money(p.price * i.qty)}</div>
+          <div><button class="cl-del" data-del="${p.id}">Tanggalin</button></div>
+        </div>`;
+    }).join('');
+
+    const remaining = FCGS_FREE_DELIVERY_MIN - sub;
+
+    el.innerHTML = `
+      <div class="wrap">
+        <div class="page-head"><h1>Shopping Cart (${cartCount()} item)</h1></div>
+
+        <div class="card" style="margin-top:12px">
+          <div class="cart-head">
+            <div>Produkto</div><div>Presyo</div><div>Dami</div><div>Kabuuan</div><div></div>
+          </div>
+          ${lines}
+        </div>
+
+        ${remaining > 0
+          ? `<div class="free-bar">🚚 Magdagdag pa ng <b>${money(remaining)}</b> para sa <b>libreng delivery</b>!</div>`
+          : `<div class="free-bar">✅ Libre na ang delivery ninyo (${money(FCGS_FREE_DELIVERY_MIN)} pataas na order).</div>`}
+
+        <div class="card cart-summary">
+          <div>
+            <div class="voucher">
+              <input id="voucherInput" placeholder="Voucher code" value="${state.voucher || ''}" />
+              <button class="btn btn-ghost btn-sm" id="applyVoucher">Apply</button>
+            </div>
+            <div class="voucher-hint">
+              Subukan: <b>SARIWA50</b> · <b>PALENGKE10</b> · <b>LIBREPADALA</b>
+              ${v ? `<br />Naka-apply: <b>${esc(v.label)}</b>` : ''}
+            </div>
+          </div>
+
+          <div class="sum-right">
+            <div class="sum-list">
+              <div><span>Subtotal</span><span>${money(sub)}</span></div>
+              <div><span>Diskwento</span><span>${disc ? '− ' + money(disc) : money(0)}</span></div>
+              <div><span>Delivery fee</span><span>${shippingWaived(sub) ? 'LIBRE' : 'sa checkout'}</span></div>
+              <div class="sum-grand"><span>Total</span><span>${money(Math.max(0, sub - disc))}</span></div>
+            </div>
+            <button class="btn btn-accent btn-lg" id="toCheckout">Checkout</button>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <button class="btn btn-ghost" data-scroll="catalog">‹ Magdagdag pa ng produkto</button>
+        </div>
+      </div>`;
+  }
+
+  /* ---------- checkout ---------- */
+  function isoDate(offsetDays) {
+    const d = new Date();
+    d.setDate(d.getDate() + (offsetDays || 0));
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function renderCheckout() {
+    if (state.cart.length === 0) { nav('cart'); return; }
+    const sub = subtotal();
+    const disc = discount();
+
+    $('#view-checkout').innerHTML = `
+      <div class="wrap">
+        <div class="page-head"><h1>Checkout</h1></div>
+
+        <div class="checkout-grid" style="margin-top:12px">
+          <div>
+            <div class="card form-card">
+              <h3>Delivery Address</h3>
+              <p class="fc-sub">Naghahatid lamang kami sa loob ng Binangonan, Rizal.</p>
+              <div class="f2">
+                <div class="field" id="fName">
+                  <label>Pangalan *</label>
+                  <input id="ckName" placeholder="Juan Dela Cruz" />
+                  <div class="err">Kailangan ang pangalan.</div>
+                </div>
+                <div class="field" id="fPhone">
+                  <label>Mobile Number *</label>
+                  <input id="ckPhone" placeholder="09XXXXXXXXX" inputmode="numeric" />
+                  <div class="err">Maglagay ng valid na 11-digit na number (09XXXXXXXXX).</div>
+                </div>
+              </div>
+              <div class="f2">
+                <div class="field" id="fBrgy">
+                  <label>Barangay *</label>
+                  <select id="ckBrgy">
+                    <option value="">— Pumili ng barangay —</option>
+                    ${FCGS_BARANGAYS.map(b => `<option value="${esc(b.name)}">${esc(b.name)} — ${money(b.fee)} · ${esc(b.eta)}</option>`).join('')}
+                  </select>
+                  <div class="err">Pumili ng barangay.</div>
+                </div>
+                <div class="field" id="fStreet">
+                  <label>Street / House No. *</label>
+                  <input id="ckStreet" placeholder="123 Rizal St., Purok 2" />
+                  <div class="err">Kailangan ang street address.</div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Landmark (optional)</label>
+                <input id="ckLandmark" placeholder="Katapat ng barangay hall" />
+              </div>
+            </div>
+
+            <div class="card form-card">
+              <h3>Delivery Schedule</h3>
+              <p class="fc-sub">Order bago mag-10:00 AM para sa same-day delivery.</p>
+              <div class="f2">
+                <div class="field" id="fDate">
+                  <label>Petsa ng delivery *</label>
+                  <input id="ckDate" type="date" value="${isoDate(0)}" min="${isoDate(0)}" max="${isoDate(14)}" />
+                  <div class="err">Pumili ng petsa.</div>
+                </div>
+                <div class="field" id="fSlot">
+                  <label>Oras *</label>
+                  <select id="ckSlot">
+                    <option value="">— Pumili ng oras —</option>
+                    ${FCGS_SLOTS.map(s => `<option value="${esc(s.label)}">${esc(s.label)} (${esc(s.note)})</option>`).join('')}
+                  </select>
+                  <div class="err">Pumili ng oras ng delivery.</div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Paalala sa tindera (optional)</label>
+                <textarea id="ckNotes" rows="2" placeholder="Hal.: Paki-scale at gut ang bangus. Hatiin sa 2 pack."></textarea>
+              </div>
+            </div>
+
+            <div class="card form-card">
+              <h3>Payment Method</h3>
+              <p class="fc-sub">Piliin kung paano babayaran ang order.</p>
+              <div class="opt-grid" id="payGrid">
+                ${FCGS_PAYMENTS.map((m, i) => `
+                  <label class="opt${i === 0 ? ' sel' : ''}">
+                    <input type="radio" name="pay" value="${m.id}" ${i === 0 ? 'checked' : ''} />
+                    <span class="opt-ic">${m.icon}</span>
+                    <span><b>${esc(m.label)}</b><span>${esc(m.note)}</span></span>
+                  </label>`).join('')}
+              </div>
+            </div>
+          </div>
+
+          <div class="card summary-card">
+            <h3>Order Summary</h3>
+            <div class="sum-items">
+              ${state.cart.map(i => {
+                const p = product(i.id);
+                return `
+                  <div class="sum-item">
+                    <span class="si-thumb bg${p.bg}">${artSVG(p)}</span>
+                    <span class="si-name">${esc(p.name)}<br /><span style="color:var(--ink-3)">${i.qty} ${esc(p.unit)} × ${money(p.price)}</span></span>
+                    <span class="si-amt">${money(p.price * i.qty)}</span>
+                  </div>`;
+              }).join('')}
+            </div>
+            <div class="sum-rows">
+              <div><span>Subtotal</span><span>${money(sub)}</span></div>
+              <div><span>Diskwento</span><span>${disc ? '− ' + money(disc) : money(0)}</span></div>
+              <div><span>Delivery fee</span><span id="ckFee">—</span></div>
+              <div class="total"><span>Total</span><span id="ckTotal">${money(Math.max(0, sub - disc))}</span></div>
+            </div>
+            <button class="btn btn-accent btn-lg block-btn" style="margin-top:16px" id="placeOrder">Place Order</button>
+            <button class="btn btn-ghost btn-sm block-btn" style="margin-top:8px" data-nav="cart">‹ Bumalik sa cart</button>
+            <p style="font-size:12px;color:var(--ink-3);margin-top:12px;text-align:center">
+              Sa pag-order, sumasang-ayon kayo sa Fresh Guarantee at delivery terms ng Fresh Catch and Green Supply Hub.
+            </p>
+          </div>
+        </div>
+      </div>`;
+
+    updateCheckoutTotals();
+  }
+
+  function currentFee() {
+    const sel = $('#ckBrgy');
+    if (!sel || !sel.value) return null;
+    const b = FCGS_BARANGAYS.find(x => x.name === sel.value);
+    return b ? b.fee : null;
+  }
+
+  function updateCheckoutTotals() {
+    const feeEl = $('#ckFee');
+    if (!feeEl) return;
+    const sub = subtotal();
+    const disc = discount();
+    const fee = currentFee();
+    const waived = shippingWaived(sub);
+
+    if (fee === null) {
+      feeEl.textContent = 'pumili ng barangay';
+      $('#ckTotal').textContent = money(Math.max(0, sub - disc));
+      return;
+    }
+    const shown = waived ? 0 : fee;
+    feeEl.innerHTML = waived ? '<b style="color:var(--brand)">LIBRE</b>' : money(fee);
+    $('#ckTotal').textContent = money(Math.max(0, sub - disc + shown));
+  }
+
+  function validateCheckout() {
+    let ok = true;
+    const checks = [
+      ['fName', $('#ckName').value.trim().length >= 2],
+      ['fPhone', /^09\d{9}$/.test($('#ckPhone').value.replace(/[\s-]/g, ''))],
+      ['fBrgy', !!$('#ckBrgy').value],
+      ['fStreet', $('#ckStreet').value.trim().length >= 3],
+      ['fDate', !!$('#ckDate').value],
+      ['fSlot', !!$('#ckSlot').value]
+    ];
+    checks.forEach(([id, valid]) => {
+      $('#' + id).classList.toggle('invalid', !valid);
+      if (!valid) ok = false;
+    });
+    if (!ok) {
+      toast('Pakikumpleto ang mga kailangang detalye.');
+      const first = $('.field.invalid');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return ok;
+  }
+
+  function placeOrder() {
+    if (!validateCheckout()) return;
+
+    const sub = subtotal();
+    const disc = discount();
+    const fee = currentFee() || 0;
+    const shipping = shippingWaived(sub) ? 0 : fee;
+    const payId = ($('input[name="pay"]:checked') || {}).value || 'cod';
+    const pay = FCGS_PAYMENTS.find(p => p.id === payId);
+
+    const now = new Date();
+    const seq = String(state.orders.length + 1).padStart(4, '0');
+    const stamp = isoDate(0).slice(2).replace(/-/g, '');
+
+    const order = {
+      id: 'FCG-' + stamp + '-' + seq,
+      placedAt: now.toISOString(),
+      deliveryDate: $('#ckDate').value,
+      slot: $('#ckSlot').value,
+      status: 'Preparing',
+      payment: pay ? pay.label : 'Cash on Delivery',
+      customer: {
+        name: $('#ckName').value.trim(),
+        phone: $('#ckPhone').value.trim(),
+        barangay: $('#ckBrgy').value,
+        street: $('#ckStreet').value.trim(),
+        landmark: $('#ckLandmark').value.trim()
+      },
+      notes: $('#ckNotes').value.trim(),
+      items: state.cart.map(i => {
+        const p = product(i.id);
+        return { id: p.id, name: p.name, emoji: p.emoji, qty: i.qty, unit: p.unit, price: p.price };
+      }),
+      subtotal: sub,
+      discount: disc,
+      shipping: shipping,
+      total: Math.max(0, sub - disc + shipping)
+    };
+
+    state.orders.unshift(order);
+    state.cart = [];
+    state.voucher = null;
+    save();
+    syncCartBadge();
+    nav('orders', order.id);
+    toast('Salamat! Natanggap na ang inyong order.');
+  }
+
+  /* ---------- orders ---------- */
+  function statusClass(s) {
+    if (s === 'Delivered') return 'st-done';
+    if (s === 'On the way') return 'st-way';
+    return 'st-prep';
+  }
+
+  function renderOrders(highlightId) {
+    const el = $('#view-orders');
+
+    if (state.orders.length === 0) {
+      el.innerHTML = `
+        <div class="wrap">
+          <div class="page-head"><h1>Aking mga Order</h1></div>
+          <div class="empty" style="margin-top:12px">
+            <span>📦</span>
+            <p>Wala pa kayong order.</p>
+            <button class="btn btn-primary" data-scroll="catalog">Mamili Na</button>
+          </div>
+        </div>`;
+      return;
+    }
+
+    const hl = highlightId ? state.orders.find(o => o.id === highlightId) : null;
+
+    const successBlock = hl ? `
+      <div class="card success">
+        <div class="tick">✓</div>
+        <h2>Salamat sa inyong order!</h2>
+        <p>Ipinapaabot na namin sa aming supplier ang inyong order.</p>
+        <div class="order-id">${esc(hl.id)}</div>
+        <p><b>${esc(hl.customer.name)}</b> · ${esc(hl.customer.phone)}</p>
+        <p>${esc(hl.customer.street)}, Brgy. ${esc(hl.customer.barangay)}, Binangonan, Rizal</p>
+        <p>🚚 ${esc(hl.deliveryDate)} · ${esc(hl.slot)} · ${esc(hl.payment)}</p>
+        <p style="font-size:20px;color:var(--price);font-weight:700;margin-top:10px">${money(hl.total)}</p>
+        <div class="track">
+          <div class="track-step done"><div class="track-dot">📝</div>Order placed</div>
+          <div class="track-step done"><div class="track-dot">🧺</div>Preparing</div>
+          <div class="track-step"><div class="track-dot">🚚</div>On the way</div>
+          <div class="track-step"><div class="track-dot">🏠</div>Delivered</div>
+        </div>
+        <div style="margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-primary" data-scroll="catalog">Mag-order Ulit</button>
+          <button class="btn btn-ghost" data-nav="home">Bumalik sa Home</button>
+        </div>
+      </div>` : '';
+
+    const list = state.orders.map(o => `
+      <div class="card order-card">
+        <div class="oc-head">
+          <div>
+            <b>${esc(o.id)}</b>
+            <small>Na-order noong ${new Date(o.placedAt).toLocaleString('en-PH')}</small>
+          </div>
+          <span class="status ${statusClass(o.status)}">${esc(o.status)}</span>
+        </div>
+        <div class="oc-items">
+          ${o.items.map(i => `<span class="oc-chip">${artById(i.id)}${esc(i.name)} × ${i.qty} ${esc(i.unit)}</span>`).join('')}
+        </div>
+        <div class="oc-foot">
+          <span>🚚 ${esc(o.deliveryDate)} · ${esc(o.slot)} · Brgy. ${esc(o.customer.barangay)} · ${esc(o.payment)}</span>
+          <span>Total: <b>${money(o.total)}</b></span>
+        </div>
+      </div>`).join('');
+
+    el.innerHTML = `
+      <div class="wrap">
+        ${successBlock}
+        <div class="page-head"><h1>Aking mga Order (${state.orders.length})</h1></div>
+        <div style="margin-top:12px">${list}</div>
+      </div>`;
+  }
+
+  /* ---------- filters ---------- */
+  function applyCategory(catId, alsoScroll) {
+    state.cat = catId;
+    state.limit = PAGE_SIZE;
+    syncCatButtons();
+    renderCatalog();
+    if (alsoScroll) goCatalog();
+  }
+
+  function syncCatButtons() {
+    $$('#catGrid .cat-item').forEach(b =>
+      b.classList.toggle('active', b.getAttribute('data-cat') === state.cat));
+    $$('#filterCats button').forEach(b =>
+      b.classList.toggle('active', b.getAttribute('data-fcat') === state.cat));
+  }
+
+  function doSearch() {
+    state.search = $('#searchInput').value;
+    state.limit = PAGE_SIZE;
+    if (state.view !== 'home') nav('home');
+    renderCatalog();
+  }
+
+  /* ---------- event wiring ---------- */
+  function wire() {
+    document.addEventListener('click', e => {
+      const t = e.target;
+
+      /* add to cart from a card (before the card handler) */
+      const add = t.closest('[data-add]');
+      if (add) {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(add.getAttribute('data-add'), 1);
+        return;
+      }
+
+      const navEl = t.closest('[data-nav]');
+      if (navEl) { e.preventDefault(); nav(navEl.getAttribute('data-nav')); return; }
+
+      if (t.closest('[data-scroll]')) { e.preventDefault(); goCatalog(); return; }
+
+      const hot = t.closest('[data-hot]');
+      if (hot) {
+        e.preventDefault();
+        $('#searchInput').value = hot.getAttribute('data-hot');
+        doSearch();
+        goCatalog();
+        return;
+      }
+
+      /* breadcrumb / seller category link */
+      const fl = t.closest('[data-fcat-link]');
+      if (fl) {
+        e.preventDefault();
+        state.search = '';
+        $('#searchInput').value = '';
+        applyCategory(fl.getAttribute('data-fcat-link'), false);
+        nav('home');
+        goCatalog();
+        return;
+      }
+
+      /* open product detail */
+      const card = t.closest('.pcard');
+      if (card) { nav('product', card.getAttribute('data-id')); return; }
+
+      const cat = t.closest('[data-cat]');
+      if (cat) { applyCategory(cat.getAttribute('data-cat'), true); return; }
+
+      const fcat = t.closest('[data-fcat]');
+      if (fcat) { applyCategory(fcat.getAttribute('data-fcat'), false); return; }
+
+      const sb = t.closest('.sort-btn');
+      if (sb) {
+        state.sort = sb.getAttribute('data-sort');
+        state.priceSort = '';
+        $('#priceSort').value = '';
+        $$('.sort-btn').forEach(b => b.classList.toggle('active', b === sb));
+        renderCatalog();
+        return;
+      }
+
+      const rb = t.closest('[data-rate]');
+      if (rb) {
+        state.rate = parseFloat(rb.getAttribute('data-rate'));
+        $$('#filterRating button').forEach(b => b.classList.toggle('active', b === rb));
+        renderCatalog();
+        return;
+      }
+
+      /* product detail: qty stepper */
+      const step = t.closest('[data-step]');
+      if (step) {
+        const input = $('#pdQty');
+        const max = parseInt(input.max, 10) || 1;
+        const d = parseInt(step.getAttribute('data-step'), 10);
+        input.value = Math.max(1, Math.min((parseInt(input.value, 10) || 1) + d, max));
+        return;
+      }
+
+      /* product detail: add to cart / buy now */
+      const buy = t.closest('[data-buy]');
+      if (buy) {
+        const qty = parseInt(($('#pdQty') || {}).value, 10) || 1;
+        if (!state.openProduct) return;
+        addToCart(state.openProduct, qty);
+        if (buy.getAttribute('data-buy') === 'now') nav('cart');
+        return;
+      }
+
+      /* cart: qty steppers */
+      const cstep = t.closest('[data-cstep]');
+      if (cstep) {
+        const row = cstep.closest('.cart-line');
+        const id = row.getAttribute('data-id');
+        const line = state.cart.find(i => i.id === id);
+        if (line) { setQty(id, line.qty + parseInt(cstep.getAttribute('data-cstep'), 10)); renderCart(); }
+        return;
+      }
+
+      const del = t.closest('[data-del]');
+      if (del) { removeFromCart(del.getAttribute('data-del')); renderCart(); toast('Natanggal sa cart.'); return; }
+
+      if (t.id === 'applyVoucher') {
+        const code = $('#voucherInput').value.trim().toUpperCase();
+        const v = FCGS_VOUCHERS[code];
+        if (!v) { toast('Walang ganitong voucher code.'); return; }
+        if (subtotal() < v.min) { toast('Kailangan ng minimum na ' + money(v.min) + ' para sa ' + code + '.'); return; }
+        state.voucher = code;
+        renderCart();
+        toast('Voucher applied: ' + v.label);
+        return;
+      }
+
+      if (t.id === 'filterToggle') {
+        const box = $('.filters');
+        box.classList.toggle('open');
+        t.textContent = box.classList.contains('open') ? '✕ Isara ang Filters' : '⚙️ Filters';
+        return;
+      }
+
+      if (t.id === 'toCheckout') { nav('checkout'); return; }
+      if (t.id === 'placeOrder') { placeOrder(); return; }
+      if (t.id === 'loadMore') { state.limit += PAGE_SIZE; renderCatalog(); return; }
+      if (t.id === 'searchBtn') { doSearch(); goCatalog(); return; }
+
+      if (t.id === 'applyPrice') {
+        const mn = parseFloat($('#minPrice').value);
+        const mx = parseFloat($('#maxPrice').value);
+        state.min = isNaN(mn) ? null : mn;
+        state.max = isNaN(mx) ? null : mx;
+        state.limit = PAGE_SIZE;
+        renderCatalog();
+        return;
+      }
+
+      if (t.id === 'resetFilters') {
+        state.cat = 'all'; state.min = null; state.max = null; state.rate = 0;
+        state.inStock = false; state.onSale = false; state.search = ''; state.limit = PAGE_SIZE;
+        $('#minPrice').value = ''; $('#maxPrice').value = '';
+        $('#inStockOnly').checked = false; $('#onSaleOnly').checked = false;
+        $('#searchInput').value = '';
+        $$('#filterRating button').forEach((b, i) => b.classList.toggle('active', i === 0));
+        syncCatButtons();
+        renderCatalog();
+        toast('Na-reset ang filters.');
+        return;
+      }
+
+      if (t.id === 'clearSearch') {
+        state.search = '';
+        $('#searchInput').value = '';
+        state.limit = PAGE_SIZE;
+        renderCatalog();
+        return;
+      }
+
+      /* checkout: payment option highlight */
+      const opt = t.closest('#payGrid .opt');
+      if (opt) {
+        $$('#payGrid .opt').forEach(o => o.classList.toggle('sel', o === opt));
+        const radio = $('input', opt);
+        if (radio) radio.checked = true;
+      }
+    });
+
+    $('#searchInput').addEventListener('input', doSearch);
+    $('#searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') { doSearch(); goCatalog(); } });
+
+    $('#priceSort').addEventListener('change', e => {
+      state.priceSort = e.target.value;
+      if (state.priceSort) $$('.sort-btn').forEach(b => b.classList.remove('active'));
+      renderCatalog();
+    });
+    $('#inStockOnly').addEventListener('change', e => { state.inStock = e.target.checked; renderCatalog(); });
+    $('#onSaleOnly').addEventListener('change', e => { state.onSale = e.target.checked; renderCatalog(); });
+
+    /* dynamically rendered inputs */
+    document.addEventListener('change', e => {
+      if (e.target.id === 'ckBrgy') updateCheckoutTotals();
+      const cq = e.target.getAttribute && e.target.getAttribute('data-cqty');
+      if (cq) { setQty(cq, parseInt(e.target.value, 10) || 1); renderCart(); }
+    });
+  }
+
+  /* ---------- boot ---------- */
+  function init() {
+    load();
+    renderCategories();
+    renderCoverage();
+    renderFlash();
+    renderCatalog();
+    syncCatButtons();
+    syncCartBadge();
+    initSlider();
+    initCountdown();
+    wire();
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+
+</script>
+</body>
+</html>
